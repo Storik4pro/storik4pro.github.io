@@ -3,37 +3,37 @@ const faqs = [
         id: 1,
         title: "Permission error",
         description: "Ошибка [Errno 13] Permission error при распаковке архива",
-        page: "installer-issues/installer_windrivert-sys/"
+        page: "installer_windrivert-sys/"
     },
     {
         id: 2,
         title: "[Errno 13] Permission denied",
         description: "Решение ошибки [Errno 13], возникающей на этапе скачивания архива.",
-        page: "installer-issues/installer_permission_denied/"
+        page: "installer_permission_denied/"
     },
     {
         id: 3,
         title: "Уведомление при запуске Update assistant",
         description: "Что значит появляющееся уведомление \"No version specified for update\"",
-        page: "installer-issues/installer_version_not_specified/"
+        page: "installer_version_not_specified/"
     },
     {
         id: 4,
         title: "[Errno 2] No such file or directory",
         description: "Решение ошибки [Errno 2], возникающей на этапе скачивания архива.",
-        page: "installer-issues/installer_errno2/"
+        page: "installer_errno2/"
     },
     {
         id: 5,
         title: "Update assistant error",
         description: "Решение ошибки \"Не удаётся получить корректный ответ от сервера\"",
-        page: "installer-issues/installer_assets/"
+        page: "installer_assets/"
     },
     {
         id: 5,
         title: "'NoneType' object has no attribute 'split'",
         description: "Решение ошибки, происходящей во время подготовки к скачиванию",
-        page: "installer-issues/installer_nontype/"
+        page: "installer_nontype/"
     },
 
 ];
