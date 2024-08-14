@@ -39,7 +39,7 @@
         </p>
         <p>
             Новая система отображения уведомлений требует регистрации приложения для отображения иконки и названия на уведомлении.
-            Ранее использовался метод, создающий множество иконок в трее <a href="ui_trey_icons.html">подробнее см. в "Иконки в трее"</a>,
+            Ранее использовался метод, создающий множество иконок в трее <a href="ui_trey_icons/">подробнее см. в "Иконки в трее"</a>,
             что являлось не удобным. Текущий метод не создает иконок в трее
         </p>
     </div>
@@ -47,13 +47,13 @@
     <div id="footer"></div>
     <script src="../../js/faq.js"></script>
     <script>
-        fetch('../../templates/header.html')
+        fetch('../../templates/header/')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             });
 
-        fetch('../../templates/footer.html')
+        fetch('../../templates/footer/')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer').innerHTML = data;

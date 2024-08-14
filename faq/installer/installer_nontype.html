@@ -15,20 +15,20 @@
         <div class="notice-block">
             <div class="icon">⚠</div>
             <p>Обратите внимание: появление этой ошибки является следствием ошибки "Update assistant error: Не удаётся получить ответ от сервера".
-                <a href="installer_assets.html">Подробности см. в Update assistant error: "Не удаётся получить ответ от сервера"</a></p>
+                <a href="installer_assets/">Подробности см. в Update assistant error: "Не удаётся получить ответ от сервера"</a></p>
         </div>
     </div>
 
     <div id="footer"></div>
     <script src="../../js/faq.js"></script>
     <script>
-        fetch('../../templates/header.html')
+        fetch('../../templates/header/')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             });
 
-        fetch('../../templates/footer.html')
+        fetch('../../templates/footer/')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer').innerHTML = data;
