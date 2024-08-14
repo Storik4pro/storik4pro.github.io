@@ -3,19 +3,19 @@ const faqs = [
         id: 1,
         title: "[WinError 1021] Невозможно создать статический параметр",
         description: "Решение ошибки \"Невозможно создать статический подпараметр для временного родительского параметра\"",
-        page: "faq/goodbyeDPI_UI/ui_reg_error.html"
+        page: "ui-issues/ui_reg_error"
     },
     {
         id: 2,
         title: "Иконки в трее",
         description: "При появлении уведомления в трее показывается несколько иконок приложения",
-        page: "faq/goodbyeDPI_UI/ui_trey_icons.html"
+        page: "ui-issues/ui_trey_icons/"
     },
     {
         id: 3,
         title: "Ошибка: множество иконок в трее",
         description: "После запуска программы через галочку \"запустить после завершения\" в установщике появляется множество иконок",
-        page: "faq/goodbyeDPI_UI/ui_trey_error.html"
+        page: "ui-issues/ui_trey_error/"
     },
 
 ];
