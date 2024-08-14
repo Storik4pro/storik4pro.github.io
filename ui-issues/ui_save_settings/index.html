@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иконки в трее</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <h2>Сохранение данных при обновлении. </h2>
+        <p>Если вы совершаете обновление через приложение, то будет автоматически создан <code>_settings.ini</code> файл.
+            Если вы обновляетесь через Update assistant, то следует вручную переименовать файл <code>settings.ini</code>, находящийся по пути <code>_internal/data/settings</code> в <code>_settings.ini</code> файл.
+        </p>
+    </div>
+
+    <div id="footer"></div>
+    <script src="../../js/faq.js"></script>
+    <script>
+        fetch('../../templates/header/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>

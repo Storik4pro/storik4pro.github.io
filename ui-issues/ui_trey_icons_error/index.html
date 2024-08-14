@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иконки в трее</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <img src="../../images/UI_01.png" alt="Ошибка: множество иконок в трее" class="faq-detail-image">
+        <h2>Ошибка: множество иконок в трее</h2>
+        <p>Данная ошибка может произойти после запуска программы через галочку "запустить после завершения" в установщике.
+            Для исправления этого поведения следует завршить процесс программы <code>goodbyeDPI.exe</code> в диспетчере задач и запустить программу заного
+        </p>
+        <div class="notice-block">
+            <div class="icon">⚠</div>
+            <p>Обратите внимание: в версиях 1.0.2 и выше эта ошибка была исправлена</p>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="../../js/faq.js"></script>
+    <script>
+        fetch('../../templates/header/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>

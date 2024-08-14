@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уведомление при запуске Update assistant</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <img src="../../images/01.png" alt="Проблема с запуском установщика" class="faq-detail-image">
+        <h2>Уведомление при запуске Update assistant</h2>
+        <p>Обычно такое уведомление появляется, если вы решили запустить Update assistant вручную. 
+            В таком случае, установка обновления будет выполнена в рабочую директорию <code>update.exe</code>. 
+            Версия для установки будет выбрана последняя доступная на <a href="https://github.com/Storik4pro/goodbyeDPI-UI/releases">странице релизов.</a></p>
+        <div class="notice-block">
+            <div class="icon">⚠</div>
+            <p>Обратите внимание: при запуске Update assistant вручную сохранение данных goodbyeDPI-UI не осуществляется. После завершения обновления следует вручную изменить неообходимые праметры в <code>settings.ini</code>.
+                <a href="../goodbyeDPI_UI/ui_save_settings/">Подробности см. в FAQ goodbyeDPI-UI</a></p>
+        </div>  
+        <p>Если вы хотите выбрать определенную версию и/или директорию, то вам следует запустить <code>update.exe</code> из PowerShell с определенными параметрами запуска.</p>  
+        <div class="code-block" data-language="PowerShell">
+            .\update.exe -l {language} -v {version} -d {directory}
+            </div>    
+        <p>Где <code>{language}</code> - язык приложения EN или RU; <code>{version}</code> - версия для установки; <code>{directory}</code> - директория для установки обновления</p>
+        <p>Например, код приведенный ниже запускает обновление до версии 1.0.3 в директории <code>"C:\Program Files\GoodbyeDPI_UI"</code>, с языком интерфейса "русский"</p>
+        <div class="code-block" data-language="PowerShell">
+            .\update.exe -l RU -v 1.0.3 -d "C:\Program Files\GoodbyeDPI_UI"
+            </div>
+        <div class="notice-block">
+            <div class="icon">⚠</div>
+            <p>Обратите внимание: запуск обновления в директориях, закрытых для изменения (например, в папке <code>Program Files</code>) потребует запуска Update assistant с привелегиями администратора.</p>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="../../js/faq.js"></script>
+    <script>
+        fetch('../../templates/header/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>
