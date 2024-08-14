@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержка - GoodbyeDPI UI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+        .guide-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/app_icon.png" alt="Логотип">
+            GoodbyeDPI UI
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="installer-issues.html">Проблемы с установщиком</a></li>
+                <li><a href="ui-issues.html">Проблемы с UI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="installation">
+            <h2>Инструкция по установке</h2>
+            <div id="quick-start" class="buttons">
+            <a id="os-button" onclick="updateSoftwareOptions('windows')" href="#" class="button">
+                <img src="images/update_icon.png" alt="Логотип программы">
+                <div class="button-text">
+                    <h3>Windows</h3>
+                    <p>Программа для обхода замедления на Windows</p>
+                </div>
+            </a>
+            </div>
+            <div id="quick-start" class="buttons">
+            <a id="os-button" onclick="updateSoftwareOptions('macos')" href="#" class="button">
+                <img src="images/update_icon.png" alt="Логотип программы">
+                <div class="button-text">
+                    <h3>Mac OS</h3>
+                    <p>Программа для обхода замедления на MacOS</p>
+                </div>
+            </a>
+            </div>
+            <div id="quick-start" class="buttons">
+            <a id="os-button" onclick="updateSoftwareOptions('cromium')" href="#" class="button">
+                <img src="images/update_icon.png" alt="Логотип программы">
+                <div class="button-text">
+                    <h3>Расширение для браузера</h3>
+                    <p>расширение для браузера на основе cromium</p>
+                </div>
+            </a>
+            </div>
+        <div id="instructions"></div>
+    </div>
+    </div>
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h4>GOODBYEDPI UI</h4>
+                <ul>
+                    <li><a href="https://github.com/Storik4pro/goodbyeDPI-UI">Репозиторий проекта</a></li>
+                    <li><a href="https://github.com/Storik4pro">Storik4pro</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>GOODBYEDPI</h4>
+                <ul>
+                    <li><a href="https://github.com/ValdikSS/GoodbyeDPI">Репозиторий проекта</a></li>
+                    <li><a href="https://github.com/ValdikSS/">ValdikSS</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GoodbyeDPI UI. Все права защищены. Лицензия: <a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></p>
+        </div>
+    </footer>
+    <script>
+        function updateSoftwareOptions(platform) {
+            let quickStartDivs = document.querySelectorAll('#quick-start');
+            quickStartDivs.forEach(div => div.classList.add('hidden'));
+
+            let instructionsDiv = document.getElementById('instructions');
+            instructionsDiv.innerHTML = `
+            <div id="quick-start" class="buttons">
+            <a href="#" onclick="goBack()">
+                <div class="button-text">
+                    <h3>◀️ НАЗАД</h3>
+                </div>
+            </a>
+            </div>`;
+
+            if (platform === 'windows') {
+                instructionsDiv.innerHTML += `
+                    <div class="buttons">
+                        <a onclick="showInstructions('goodbyeDPI')" href="#" class="button">
+                            <div class="button-text">
+                                <h3>goodbyeDPI</h3>
+                            </div>
+                        </a>
+                        <a onclick="showInstructions('zapret')" href="#" class="button">
+                            <div class="button-text">
+                                <h3>zapret</h3>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            } else if (platform === 'macos') {
+                instructionsDiv.innerHTML += `
+                    <div class="buttons">
+                        <a onclick="showInstructions('goodbyeDPI')" href="#" class="button">
+                            <div class="button-text">
+                                <h3>goodbyeDPI</h3>
+                            </div>
+                        </a>
+                        <a onclick="showInstructions('zapret')" href="#" class="button">
+                            <div class="button-text">
+                                <h3>zapret</h3>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            } else if (platform === 'cromium') {
+                showInstructions('cromium');
+            }
+        }
+
+        function showInstructions(option) {
+            let instructionsDiv = document.getElementById('instructions');
+            instructionsDiv.innerHTML = '';
+
+            instructionsDiv.innerHTML = `
+            <div id="quick-start" class="buttons">
+            <a href="#" onclick="goBack()">
+                <div class="button-text">
+                    <h3>◀️ НАЗАД</h3>
+                </div>
+            </a>
+            </div>`;
+
+            if (option === 'goodbyeDPI') {
+                instructionsDiv.innerHTML += `
+                    <div class="buttons">
+                        <a onclick="displayFinalInstructions('goodbyeDPI_UI')" href="#" class="button">
+                            <div class="button-text">
+                                <h3>goodbyeDPI UI</h3>
+                            </div>
+                        </a>
+                        <a onclick="displayFinalInstructions('goodbyeDPI')" href="#" class="button">
+                            <div class="button-text">
+                                <h3>goodbyeDPI</h3>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            } else if (option === 'zapret') {
+                instructionsDiv.innerHTML += `<p>Мультиплатформенный обход DPI</p>
+                <p><a href="https://github.com/bol-van/zapret">репозиторий zapret</a></p>`;
+            } else if (option === 'cromium') {
+                instructionsDiv.innerHTML += `
+                <p>1. Скачайте последнюю версию расширения используя <a href="https://chromewebstore.google.com/detail/khpkadmigccakicajloljbckokgnknkp">chrome web store</a></p>
+                <p>2. Скопируйте текст <code>chrome://flags/#enable-quic</code> и вставьте его в адресную строку браузера</p>
+                <p>3. Нажмите Enter</p>
+                <p>4. Поменяйте значение настройки "Experimental QUIC protocol" на Enabled</p>`;
+            }
+        }
+
+        function displayFinalInstructions(finalOption) {
+            let instructionsDiv = document.getElementById('instructions');
+            instructionsDiv.innerHTML = `
+            <div id="quick-start" class="buttons">
+            <a href="#" onclick="goBack()">
+                <div class="button-text">
+                    <h3>◀️ НАЗАД</h3>
+                </div>
+            </a>
+            </div>`;
+            if (finalOption === 'goodbyeDPI_UI') {
+                instructionsDiv.innerHTML += `
+                <p>1. Скачайте последнюю версию goodbyeDPI UI используя <a href="https://github.com/Storik4pro/goodbyeDPI-UI/releases">страницу релизов</a></p>
+                <p>2. Выключите антивирус</p>
+                <p>3. Установите goodbyeDPI UI</p>
+                <p>4. Добавьте файл goodbyeDPI.exe в список исключений вашего антивируса</p>
+                <p>5. Включите антивирус</p>
+                <p>6. Поздравляем! Вы завершили установку!</p>`;
+            } else if (finalOption === 'goodbyeDPI') {
+                instructionsDiv.innerHTML += `<p>
+                    Инструкция для goodbyeDPI...
+                    </p>`;
+            }
+        }
+        function goBack() {
+            let quickStartDivs = document.querySelectorAll('#quick-start');
+            quickStartDivs.forEach(div => div.classList.remove('hidden'));
+
+            let instructionsDiv = document.getElementById('instructions');
+            instructionsDiv.innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>
