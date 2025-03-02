@@ -9,23 +9,10 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/app_icon.png" alt="Логотип">
-            GoodbyeDPI UI
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index">Главная</a></li>
-                <li><a href="installer-issues">Проблемы с установщиком</a></li>
-                <li><a href="ui-issues">Проблемы с UI</a></li>
-            </ul>
-        </nav>
-        
-    </header>
+    <div id="header"></div>
 
     <div class="container">
-        <h2>Потерялись?</h2>
+        <h2>Добро пожаловать!</h2>
         <div id="quick-start" class="buttons">
             <a href="instruction" class="button">
                 <img src="images/update_icon.png" alt="Логотип программы">
@@ -36,52 +23,31 @@
             </a>
             
         </div>
-        <h2>Поддержка по часто задаваемым вопросам</h2>
-
         <div id="troubleshooting" class="buttons">
-            <a href="installer-issues" class="button">
-                <img src="images/installer_icon.png" alt="Логотип программы">
+            <a href="wiki" class="button">
                 <div class="button-text">
-                    <h3>Проблемы с обновлением</h3>
-                    <p>Решение проблем возникающих при обновлении.</p>
-                </div>
-            </a>
-            <a href="ui-issues" class="button">
-                <img src="images/app_icon.png" alt="Логотип программы">
-                <div class="button-text">
-                    <h3>Проблемы с goodbyeDPI UI</h3>
-                    <p>Решение проблем при использовании программы.</p>
+                    <h3>Справка и документация</h3>
+                    <p>Описание функций и их использования.</p>
                 </div>
             </a>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-columns">
-            <div class="footer-column">
-                <h4>GOODBYEDPI UI</h4>
-                <ul>
-                    <li><a href="https://github.com/Storik4pro/goodbyeDPI-UI">Репозиторий проекта</a></li>
-                    <li><a href="https://github.com/Storik4pro">Storik4pro</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>GOODBYEDPI</h4>
-                <ul>
-                    <li><a href="https://github.com/ValdikSS/GoodbyeDPI">Репозиторий проекта</a></li>
-                    <li><a href="https://github.com/ValdikSS">ValdikSS</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>НЕ НАШЛИ РЕШЕНИЕ ПРОБЛЕМЫ?</h4>
-                <ul>
-                    <li><a href="https://github.com/Storik4pro/goodbyeDPI-UI/issues">Создать обращение в поддержку</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 GoodbyeDPI UI. Все права защищены. Лицензия: <a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></p>
-        </div>
-    </footer>
+    <div id="footer"></div>
+    <script>
+        fetch('../../templates/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
 </body>
 </html>

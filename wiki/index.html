@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki - GoodbyeDPI UI</title>
+    <link rel="icon" href="{{ site.favicon }}" type="../../image/x-icon">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container"> 
+        <h2>Документация</h2>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Поиск...">
+            <button onclick="searchFAQs()">Найти</button>
+        </div>
+        <div id="notification" style="display: none;">
+            <p>Введите запрос для поиска</p>
+        </div>
+        <div id="search-results-info">
+        <p id="search-results-count"></p>
+        </div>
+        
+        <div id="faq-container" class="faq-container">
+        </div>
+        
+        <div id="pagination" style="display: none;">
+            <button id="prev-page">Назад</button>
+            <span id="page-info"></span>
+            <button id="next-page">Вперед</button>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="../../js/wiki.js"></script>
+    <script>
+        fetch('../../templates/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация - настройка прокси</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="icon" href="../../app_icon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <i>Apply for => 1.2.7 and later</i>
+        
+        <h3>Настройка прокси</h3>
+        <i>Краткое описание функции</i>
+        <p>
+            Функция настройки прокси позволяет настроить компоненты, которые работают в режиме прокси (Например, byeDPI). 
+            В качестве вариантов настройки предлагается несколько вариантов настройки - ручная, для всей системы, для выбранных приложений.<br>
+            Выбранный вариант запуска будет использоваться по умолчанию для всех компонентов, чей запуск происходит в режиме прокси.
+        </p>
+        <h4>Настройка для всей системы (TCP)</h4>
+        <i>Краткое описание функции</i>
+        <p>
+            При выборе этого способа настройки будет проксироваться весь трафик с вашего ПК, что может привести к проблемам, если на ПК
+            установлена не совместимая с компонентом программа. Например, ByeDPI может выдать ошибку <code>add_event: pool is full</code><br>
+            Программа не будет предварительно настраивать трафик для компонента-прокси, из-за чего настройка для UDP соединений может быть усложнена.<br>
+            Изменяет системные настройки прокси в реесте по пути 
+            <code>\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings</code><br>
+            Изменяемые параметры: <code>ProxyServer</code> <code>ProxyOverride</code> <code>ProxyEnable</code>.<br><br>
+            Приложение следит за статусом работы компонента и выключит проксирование трафика в системе при завершении работы компонента.
+            
+        </p>
+        <div class="notice-block info">
+            <p>Вы можете просмотреть текущие системные настройки прокси в <a href="ms-settings:network-proxy">приложении Параметры</a></p>
+        </div>
+        <h4>Настройка для приложений (TCP+UDP)</h4>
+        <i>Краткое описание функции</i>
+        <p>
+            При выборе этого способа настройки вам будет предложено выбрать приложения, для которых трафик будет проксироваться.
+            В утилите просмотра вывода процесса появится возможность показать вывод ProxiFyre. Можно выбрать тип трафика, который 
+            будет проксироваться (TCP и/или UDP).<br>
+            Для выбора поддерживаются как классические Win32 приложения, так и приложения Universal Windows Platform. 
+            Для ручного добавления классического приложения достаточно указать имя исполняемого файла (Например, <code>explorer</code>). 
+            Для добавления UWP-приложения необходимо указать путь к его папке (Например, 
+            <code>C:\Program Files\WindowsApps\Microsoft.BingWeather_4...</code>).<br><br>
+            Для начала настройки необходимо установить <a href="https://github.com/wiresock/proxifyre">ProxiFyre</a> и 
+            <a href="https://github.com/wiresock/ndisapi">Windows Packet Filter</a>. Сделать это можно через меню "Система"->"Компоненты" или
+            в мастере настройки прокси. Перед началом установки необходимо принять 
+            <a target="_blank" rel="noopener noreferrer" href="../../wpf_elua.html" >стороннее лицензионное соглашение</a>
+        </p>
+        <h4>Ручная настройка</h4>
+        <i>Краткое описание функции</i>
+        <p>
+            Позволяет выбрать параметры запуска компонента-прокси вручную. 
+            Дополнительные действия при запуске компонента предприниматься не будут.
+        </p>
+        <h3>Изображения</h3>
+        <img class="preview" src="../../images/wiki_011.png" alt="01">
+        <img class="preview" src="../../images/wiki_012.png" alt="02">
+        <img class="preview" src="../../images/wiki_013.png" alt="03">
+        <img class="preview" src="../../images/wiki_014.png" alt="04">
+        <img class="preview" src="../../images/wiki_015.png" alt="05">
+
+    </div>
+
+    <div id="footer"></div>
+    <script src="../../js/wiki.js"></script>
+    <script>
+        fetch('../../templates/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>

@@ -442,7 +442,7 @@ code {
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 400; 
-    white-space: nowrap;
+    word-break: break-all;
 }
 
 .code-block {
@@ -515,10 +515,18 @@ code {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.notice-block.info {
+    border-color: #87CEEB;
+}
+
 .notice-block .icon {
     font-size: 24px; 
     margin-right: 10px;
     color: #FFD700; 
+}
+
+.notice-block.info .icon {
+    color: #87CEEB; 
 }
 
 .notice-block p {
@@ -527,6 +535,39 @@ code {
     font-weight: 500;
     white-space: pre-line;
 }
+
+.notice-block.info p {
+    color: unset; 
+}
+
+.preview {
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.fullscreen img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
 #pagination {
     display: flex;
     justify-content: center;
@@ -580,4 +621,11 @@ code {
 
 #installation button{
     cursor: pointer;
+}
+
+@media screen and (max-width: 877px) {
+    .container {
+        min-width: unset;
+        width: 89vw;
+    }
 }
