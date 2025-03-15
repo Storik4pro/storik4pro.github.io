@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация - Перенос настроек byedpi</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="icon" href="../../app_icon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <i>Apply for GoodbyeDPI-UI => 1.2.7 and later<br>Apply for ByeByeDPI => 1.4.1 and later</i>
+        
+        <h3>Перенос настроек byeDPI между телефоном и ПК</h3>
+        <i>Краткое описание функции</i>
+        <p>
+            Функция позволяет переносить настройки запуска из 
+            <a href="https://github.com/romanvht/ByeDPIManager/">Android-приложения ByeByeDPI</a> (Далее - BBD)
+            в настольное приложение GoodbyeDPI-UI. Перенос осуществляется посредством импорта/экспорта JSON файла с настройками
+        </p>
+        <div>
+            <div class="collapsible">
+                <span>Импорт JSON файла</span>
+                <i>▼</i>
+            </div>
+            <div class="content">
+                <i>Краткое описание функции</i>
+                <p>
+                    GoodbyeDPI-UI обработает и применит настройки из BBD-совместимого JSON файла. 
+                    Несовместимые с Windows настройки ByeDPI будут автоматически удалены. <br>
+                    <a href="https://github.com/Storik4pro/goodbyeDPI-UI-configs/blob/main/byedpi/configs/_supported_params.json">Показать список совместимых параметров.</a>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="collapsible">
+                <span>Экспортировать и отправить на телефон JSON файл</span>
+                <i>▼</i>
+            </div>
+            <div class="content">
+                <i>Краткое описание функции</i>
+                <p>
+                    GoodbyeDPI-UI сохранит данные текущего пресета в BBD-совместимый JSON файл. Вам будет предложены действия - 
+                    "Сохранить в файл" и "Поделиться или отправить на устройство". Выбор первого варианта вызовет диалог сохранения файла, 
+                    а второго вызовет системное меню "Поделиться"  
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="collapsible">
+                <span>Импорт и экспорт в BBD</span>
+                <i>▼</i>
+            </div>
+            <div class="content">
+                <p>
+                    Откройте настройки BBD
+                </p>
+                <img class="preview guide" src="../../images/wiki_02g1.png" alt="01">
+                <p>
+                    В настройках нажмите "Подробности"
+                </p>
+                    <img class="preview guide" src="../../images/wiki_02g2.png" alt="02">
+                <p>
+                    Выберите необходимое действие - Экспортировать или импортировать
+                </p>
+                    <img class="preview guide" src="../../images/wiki_02g3.png" alt="03">
+                <p>
+                </p>
+            </div>
+        </div>
+        <h3>Изображения</h3>
+        <i>There is no images for this feature</i> 
+        <h3>Обратная связь</h3>
+        <button type="button" onclick="location.href='https://github.com/Storik4pro/goodbyeDPI-UI/discussions/categories/transfer-data-to-from-phone'">Оставить отзыв</button>   
+
+    </div>
+
+    <div id="footer"></div>
+    <script src="../../js/wiki.js"></script>
+    <script>
+        fetch('../../templates/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>
