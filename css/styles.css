@@ -10,6 +10,14 @@ body {
     min-height: 100vh; 
 }
 
+h5 {
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
 header {
     background-color: #1e1e1e;
     padding: 15px 20px;
@@ -539,7 +547,10 @@ code {
 .notice-block.info p {
     color: unset; 
 }
-
+.preview.guide {
+    width: 450px; 
+    height: 150px; 
+}
 .preview {
     width: 150px; 
     height: 150px; 
@@ -566,6 +577,46 @@ code {
 .fullscreen img {
     max-width: 90%;
     max-height: 90%;
+}
+
+.collapsible {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #3c3c3c;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #87CEEB;
+    font-weight: bold;
+}
+
+.collapsible i {
+    transition: transform 0.3s ease;
+}
+
+.collapsible.active i {
+    transform: rotate(180deg);
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease, padding 0.2s ease;
+    background-color: #222222;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.content.open {
+    max-height: 2500px; 
+    padding: 10px;
+}
+
+.content p {
+    margin: 0;
 }
 
 #pagination {

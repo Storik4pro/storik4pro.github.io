@@ -156,3 +156,12 @@ img.addEventListener('click', () => {
     document.body.appendChild(fullscreenDiv);
 });
 });
+
+document.querySelectorAll('.collapsible').forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+
+        button.classList.toggle('active');
+        content.classList.toggle('open');
+    });
+});
