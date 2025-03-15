@@ -4,6 +4,11 @@ const faqs = [
         description: "Сведения о работе утилиты быстрой настройки компонента - прокси",
         page: "proxy-install-util/"
     },
+    {
+        title: "Перенос настроек byeDPI между телефоном и ПК",
+        description: "Сведения о переносе настроек byeDPI между телефоном и ПК",
+        page: "byebyedpi-cross-config/"
+    },
 
 ];
 
