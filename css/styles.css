@@ -615,10 +615,6 @@ code {
     padding: 10px;
 }
 
-.content p {
-    margin: 0;
-}
-
 #pagination {
     display: flex;
     justify-content: center;
