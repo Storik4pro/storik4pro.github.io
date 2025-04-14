@@ -9,6 +9,11 @@ const faqs = [
         description: "Сведения о переносе настроек byeDPI между телефоном и ПК",
         page: "byebyedpi-cross-config/"
     },
+    {
+        title: "Утилита настройки условного запуска",
+        description: "Сведения о работе утилиты настройки условного запуска",
+        page: "condition-util/"
+    },
 
 ];
 
