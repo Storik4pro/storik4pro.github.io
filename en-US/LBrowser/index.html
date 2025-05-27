@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lines Browser</title>
+    <link rel="icon" href="/images/LBrowser48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">LINES BROWSER</h2>
+        <div class="legacy-warning">
+            <p>This page is also available in <a class="link-legacy" href="/ru-RU/LBrowser">Russian</a></p>
+        </div>
+        <br>
+        <div class="legacy-warning">
+            This page is translated into your preferred language using AI. You can help improve the translation of this wiki!
+            <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/storik4pro.github.io">
+                Visit the wiki’s repo<span class="font-icon"></span>
+            </a>
+        </div>
+        <h3 class="legacy">Welcome to the project’s main page for the Russian language!</h3>
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE946;</span>
+                    <h3 class="legacy">Project Details</h3>
+                </div>  
+                <div class="legacy-info-block">
+                    <p>
+                        <strong>Lines Browser</strong> is a Browser-as-a-Service solution that allows you to use the modern Internet on Windows 10 Mobile devices<sup>1</sup>. Unlike other browsers on this platform, Lines Browser does not use the outdated EdgeHTML engine.
+                    </p>
+                    <p>
+                        It requires a PC running Windows 10 or 11 on the same network as the phone<sup>2</sup>. All web-page processing happens on the PC, while the phone is used only for displaying the image, playing audio<sup>3</sup>, and sending user commands. Thus, the smartphone acts as a remote terminal, and the main workload falls on the PC<sup>4</sup>.
+                    </p>
+                    <hr>
+                    <small>
+                        <sup>1</sup> Image and audio transmission quality depends on your network bandwidth.<br>
+                        <sup>2</sup> You can also set up the server on a PC with a public IP address for access from anywhere in the world.<br>
+                        <sup>3</sup> The audio transmission feature is in beta testing and may be unstable.<br>
+                        <sup>4</sup> Although page rendering occurs on the server, continuous data exchange can still tax the phone and drain its battery.
+                    </small>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Available Help Sections</h3>
+                </div>  
+                <div class="help-container">
+                    <form class="help-container-item" action="wiki">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Official Wiki</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy" href="wiki">
+                                    Go to<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                    <form class="help-container-item" action="wiki/what-i-need-to-do-for-start">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Getting Started</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy"  href="wiki/what-i-need-to-do-for-start">
+                                    Go to<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                    <form class="help-container-item" action="wiki/sound">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Preliminary Testing: Audio Transmission</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy"href="wiki/sound">
+                                    Go to<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE7B8;</span>
+                    <h3 class="legacy">Downloads</h3>
+                </div>  
+                <div class="help-container">
+                    <div class="help-container-item">
+                        <button class="legacy-button news-tile" type="button" data-modal-target="#download-LBR">
+                            <h2 class="legacy">Lines Browser App Package (.appx)</h2>
+                            <p id="LBR-ver" class="ver-text">Loading ...</p>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy">
+                                    Show download options<span class="font-icon">&#xE896;</span>
+                                </a>
+                            </div>  
+                        </button>
+                    </div>
+                    <div class="help-container-item">
+                        <button class="legacy-button news-tile" type="button" data-modal-target="#download-SDA">
+                            <h2 class="legacy">Server Deployment Assistant (.exe)</h2>
+                            <p id="SDA-ver" class="ver-text">Loading ...</p>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy">
+                                    Show download options<span class="font-icon">&#xE896;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xEC7A;</span>
+                    <h3 class="legacy">Other Features</h3>
+                </div> 
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/LBrowser">
+                        Go to GitHub<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/LBrowser/issues">
+                        Report an Issue<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <div id="download-SDA" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="SDA-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <button id="SDA-download" class="legacy-button">Download now</button>
+            </div>
+            <div class="modal-buttons-container">
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="download-LBR" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <h3 class="legacy">Download from store</h3>
+                <div class="legacy-warning">
+                    <p>Downloading from the store are not availible at the moment.</p>
+                </div>
+                <p><b class="separator">---OR---</b></p>
+                <h3 class="legacy">Download via manager</h3>
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="LBR-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <p class="choose-header">Choose file to download</p>
+                <div class="choose-language-container version-container">
+                    <select id="LBR-file-select" class="legacy-button selector" title="Select version">
+                        <option value="LinesBrowser_arm.cer">Application certificate (.cer)</option>
+                        <option value="LinesBrowser_arm.appxbundle" selected>Application bundle (.appxbundle)</option>
+                        <option value="LBrowser.zip">Application archive for installing via WUT (.zip)</option>
+                        <option value="SDA.zip">Server Deployment Assistant x64 (.exe)</option>
+                    </select>
+                </div>
+                <button id="LBR-download" class="legacy-button">Download now</button>
+                
+                
+            </div>
+            <div class="modal-buttons-container">
+                
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/modalScript.js"></script>
+    <script src="/cookieScript.js"></script>
+    <script src="/downloadHelper.js"></script>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
