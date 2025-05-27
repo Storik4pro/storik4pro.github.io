@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ассистент Развертывания Сервера - Вики</title>
+    <link rel="icon" href="/images/ServerDeploymentAssistant48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">Объяснение API</h2>
+        <div class="legacy-warning">
+            Эту страницу нужно дополнить и упростить. Вы можете внести свой вклад, изменив страницу на 
+            <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/storik4pro.github.io">
+                репозитории этого сайта<span class="font-icon"></span>
+            </a>
+        </div>
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="legacy-info-block">
+                    <h3 class="legacy">Типы данных и их назначение</h3>
+                    <div class="legacy-warning">
+                        В этом разделе перечислены стандартные типы данных из пространства 
+                        имён <code>System.Net.WebSockets</code> в <code>.NET Framework 4.8</code>.
+                        Для получения дополнительных сведений о возможных типах данных и 
+                        их назначении смотрите официальную документацию. Ради упрощения в 
+                        последующих примерах определения <code>System.Net.WebSockets</code> опущены.
+                    </div>
+                    При подключении к основному серверу:
+                    <ul>
+                        <li>
+                            <code>WebSocketMessageType.Binary</code> используется для передачи видео при срабатывании 
+                            события <code>Paint</code> или пользовательском запросе на получение скриншота страницы.<br>
+                            Данные передаются в виде немаркированного массива байтов.<br>
+                            Данные могут быть
+                            сжатыми при помощи <code>GZip</code> или отправлены без сжатия. На это влияет настройка 
+                            <code>VideoStreamSettings/UseVideoGzipCompress</code> в файле <code>settings.xml</code>
+                        </li>
+                        <li>
+                            <code>WebSocketMessageType.Text</code> используется для передачи текстовых сообщений. 
+                            Текстовые сообщения содержат JSON-данные, которые могут содержать как данные о состоянии браузера, 
+                            так и некоторые изображения, которые имеют маркировку.
+                        </li>
+                    </ul>
+                    При подключении к серверу для передачи аудио:
+                    <ul>
+                        <li>
+                            <code>WebSocketMessageType.Binary</code> используется для передачи аудио данных. 
+                            Данные передаются в виде маркированного массива байтов. <br>
+                            Независимо от настроек, передаваемый пакет всегда содержит заголовок фиксированного размера 12 байт, 
+                            который состоит из двух полей:<br>
+                            <ul>
+                                <li>
+                                    <b>uint</b> (4 байта) — порядковый номер пакета (32-битное целое)
+                                </li>
+                                <li>
+                                    <b>ulong</b> (8 байт) — временная метка в наносекундах (64-битное целое)
+                                </li>
+                            </ul>                          
+                            После заголовка идёт поток звуковых PCM-данных.
+                            <br>
+                            Частота звука может быть снижена для экономии данных. За это отвечает настройка
+                            <code>AudioStreamSettings/AudioSampleRate</code> и <code>AudioStreamSettings/UseAudioResampling</code> 
+                            в файле <code>settings.xml</code>.<br>
+                            Данные могут быть сжатыми при помощи <code>GZip</code> или отправлены без сжатия. 
+                            На это влияет настройка <code>AudioStreamSettings/UseAudioGzipCompress</code> в файле <code>settings.xml</code>
+                        </li>
+                    </ul>
+                    <br>
+                    <h3 class="legacy">Пакет с текстовыми данными</h3>
+                    Пакет имеет следующий формат:
+                    <div class="code-block legacy-code-block" data-language="C#">
+                        <pre>
+<code>{
+    PType: int32|string,  // тип пакета
+    PData: string,        // данные пакета в формате строки. Это может быть JSON-строка, 
+                          // которая содержит данные о состоянии браузера или изображение с маркировкой или
+                          // может быть обычной строкой, которая содержит текстовое сообщение.
+}</code></pre>
+                    </div>
+                    В качестве <code>PType</code> могут использоваться следующие значения, в зависимости
+                    от места назначения пакета.<br>
+                    Если пакет был отправлен с сервера на клиент и PType является <b>int32</b>:
+                    <ul>
+                        <li><code>0 (NavigatedUrl)</code> — Пакет с данными о текущем URL</li>
+                        <li><code>1 (TextInputContent)</code> — Пакет с данными о текущем контенте в активном поле ввода</li>
+                        <li><code>2 (TextInputSend)</code> — Пакет с данными об отправленном в поле ввода текста (Не используется)</li>
+                        <li><code>3 (TextInputCancel)</code> — Пакет без данных. Обозначает, что поле перестало существовать 
+                            и/или более не является активным</li>
+                        <li><code>4 (LoadingStateChanged)</code> — Пакет с данными о текущем состоянии загрузки страницы. 
+                            Содержит информацию в виде <b>string</b> с возможными значениями <code>LOADING/COMPLETE</code> 
+                            первое значение означает, что страница сейчас загружается, а второе, что загрузка завершена</li>
+                        <li><code>5 (OpenPages)</code> — Пакет с данными о текущих открытых страницах. Содержит строку.
+                            В качестве сепаратора используется символ <code>;</code>. У каждой вкладки есть 2 параметра,
+                            разделенных символом <code>|</code>. Нулевой параметр — это заголовок страницы (<b>string</b>), а первый — это 
+                            ID страницы (<b>Int64</b>).</li>
+                        <li><code>6 (EditOpenTabTitle)</code> — Пакет с данными о текущем заголовке страницы. 
+                            Содержит строку с данными об уникальном ID (<b>Int64</b>) [1 элемент] и новым заголовком (<b>string</b>) [0 элемент].
+                            Параметры разделяются символом <code>|</code>. </li>
+                        <li><code>7 (IsClientCanSendGoBackRequest)</code> — Пакет с данными о возможности вернуться на страницу назад.
+                            Содержит <b>string</b> с возможными значениями <code>true/false</code></li>
+                        <li><code>8 (IsClientCanSendGoForwardRequest)</code> — Пакет с данными о возможности перейти на страницу вперед.
+                            Содержит <b>string</b> с возможными значениями <code>true/false</code></li>
+                    </ul>
+                    <hr>
+                    Кастомные значения <code>PType</code>, которым не присвоен id. Является <b>string</b>:
+                    <ul>
+                        <li><code>FullPageScreenshot</code>
+                            <ul>
+                                <li>ChunkIndex <b>int</b> — индекс текущего чанка (0-based), указывает порядок фрагмента в наборе.</li>
+                                <li>TotalChunks <b>int</b> — общее количество чанков, на которое разбит скриншот.</li>
+                                <li>Data <b>string</b> — строка с данными изображения в Base64 (GZip не применяется).</li>
+                            </ul>
+                        </li>
+                        <li><code>TabScreenshot</code>
+                            <ul>
+                                <li>TabId <b>long</b> — индекс вкладки, для которой необходимо обновить изображение.</li>
+                                <li>Data <b>string</b> — Base64 строка с данными о изображении (GZip не применяется)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="legacy-warning">
+                        Обратите внимание: необходимо учитывать, что <code>PType</code> может быть как <b>int32</b>, так и <b>string</b>.
+                        Вам нужно сделать проверку на тип данных, чтобы избежать ошибок при обработке пакетов.
+                    </div>
+                    <br>
+                    <div class="legacy-warning">
+                        Для <code>FullPageScreenshot</code> и <code>TabScreenshot</code> нет настроек сжатия, однако вы
+                        можете изменить качество создаваемых изображений. 
+                        На это влияет настройка <code>VideoStreamSettings/FullPageScreenshotQuality</code> в файле <code>settings.xml</code>
+                    </div>
+                    <br>
+                    Если пакет был отправлен с клиента на сервер [PType всегда является <b>int32</b>]:
+                    <ul>
+                        <li><code>0 (Navigation)</code> — Позволяет отправить <b>string</b> URL или <b>string</b> текст для поиска 
+                            для открытия в активной вкладке. Вы можете использовать префикс <code>skipchk:</code>, чтобы пропустить
+                            проверку на валидность URL и в любом случае открыть страницу. Если вы отправите текст без префикса,
+                            то будет выполнена проверка на валидность URL. Если URL не валиден, то будет открыт поиск. Вы можете 
+                            изменить поисковую систем, которая будет использоваться для поиска, если URL не валиден.
+                            <br>
+                            На это влияет настройка <code>BrowserSettings/SearchSystem</code> в файле <code>settings.xml</code>
+                            </li>
+                        <li><code>1 (SizeChange)</code> — Позволяет изменить размер окна браузера на новый 
+                            Windows.Foundation.<b>Size</b>. В качестве параметров передает <b>int</b> Width и <b>int</b> Height.<br>
+                            Размер будет умножен на целочисленный <code>scalingFactor</code>. 
+                            <br>
+                            На это влияет настройка <code>VideoStreamSettings/ScalingFactor</code> в файле <code>settings.xml</code>
+                        </li>
+
+                        <li><code>2 (TouchDown)</code> — Позволяет отправить событие касания экрана в виде <b>PointerPacket</b>
+                            </li>
+                        <li><code>3 (TouchUp)</code> — Позволяет отправит событие отпускания касания экрана в виде <b>PointerPacket</b>
+                            </li>
+                        <li><code>4 (TouchMoved)</code> — Позволяет отправит событие отпускания касания экрана в виде <b>PointerPacket</b><br>
+                            Структура <b>PointerPacket</b>:
+                            <ul>
+                                <li><code>px</code> <b>double</b> — позиция касания по X</li>
+                                <li><code>py</code> <b>double</b> — позиция касания по Y</li>
+                                <li><code>id</code> <b>uint</b> — уникальный идентификатор события касания</li>
+                            </ul>
+                            </li>
+                        <li><code>5 (ACK)</code> — Позволяет отправить ACK пакет на сервер. Сервер не предпринимает никаких действий
+                            при получении этого пакета</li>
+                        <li><code>6 (Frame)</code> — Сервер не предпринимает никаких действий при получении этого пакета</li>
+                        <li><code>7 (TextInputSend)</code> — Позволяет отправить <b>string</b> в текущий активный элемент документа, 
+                            нажимает клавишу <code>0x0D</code> для мнгновенного ввода данных</li>
+                        <li><code>8 (NavigateForward)</code> — Заставляет браузер перейти на страницу вперед, если это возможно</li>
+                        <li><code>9 (NavigateBack)</code> — Заставляет браузер перейти на страницу назад, если это возможно</li>
+                        <li><code>10 (SendKey)</code> — Позволяет отправить KeyCode <b>int</b> в активный элемент ввода на
+                            странице. Более гибкий, чем <code>SendKeyCommand</code></li>
+                        <li><code>11 (RequestFullPageScreenshot)</code> — Используется для отправки запроса скриншота полной страницы
+                            (Статический режим). Не принимает данных.</li>
+                        <li><code>12 (ModeChange)</code> — Позволяет отправить <b>string</b> с режимом обновления <code>Static/Dynamic</code></li>
+                        <li><code>13 (SetActivePage)</code> — Позволяет выбрать активную вкладку с <b>long</b> Id.
+                            Заставляет сервер мгновенно отправить новый снимок только что активированной вкладки</li>
+                        <li><code>14 (GetTabsOpen)</code> — Заставляет сервер отправить все открытые вкладки на клиент</li>
+                        <li><code>15 (CloseTab)</code> — Позволяет закрыть вкладку с <b>long</b> Id. Если после закрытия
+                            вкладки других вкладок не останется, то моментально будет открыта новая с <code>FirstRunUrl</code><br>
+                            На это влияет настройка <code>BrowserSettings/FirstRunUrl</code> в файле <code>settings.xml</code>
+                            </li>
+                        <li><code>16 (RequestTabScreenshot)</code> — Запрашивает скриншот для вкладки с конкрентным <b>long</b> Id</li>
+                        <li><code>17 (OpenUrlInNewTab)</code> — Позволяет открыть URL в новой вкладке. Проверка на валидность 
+                            не проводится</li>
+                        <li><code>18 (NewScreenShotRequest)</code> — Запрашивает принудительную отправку скриншота на клиент </li>
+                        <li><code>19 (IsCanGoBack)</code> — Запрашивает у сервера информацию о возможности перейти на страницу назад. 
+                            Сервер не предпринимает никаких действий при получении этого пакета</li>
+                        <li><code>20 (IsCanGoForward)</code> — Запрашивает у сервера информацию о возможности перейти на страницу вперед
+                            Сервер не предпринимает никаких действий при получении этого пакета</li>
+                        <li><code>21 (SendKeyCommand)</code> — Позволяет отправить конкретную клавишу действия на сервер. 
+                            В качестве данных используется <b>string</b> допустимые значения: <code>Enter/Backspace</code>. 
+                            Является альтернативой <code>SendKey</code></li>
+                        <li><code>22 (SendChar)</code> — Позволяет отправить char в активный элемент ввода на странице. 
+                            В качестве данных используется <b>KeyCharPacket</b>.<br>
+                            Структура <b>KeyCharPacket</b>:
+                            <ul>
+                                <li><code>JSONData</code> <b>string</b> буква, которую необходимо отправить</li>
+                                <li><code>Shift</code> <b>bool</b> активировать ли клавишу Shift при вводе символа</li>
+                                <li><code>Ctrl</code> <b>bool</b> активировать ли клавишу Ctrl при вводе символа</li>
+                                <li><code>Alt</code> <b>bool</b> активировать ли клавишу Alt при вводе символа</li>
+                                <li><code>Layout</code> <b>string</b>: позволяет указать раскладку, которую следует использовать при вводе символа. 
+                                    Раскладка должна соответствовать формату <code>ll-RR</code> (язык-регион) или <code>ll</code>, 
+                                    если у языка нет кода региона, например, <code>ru</code>.</li>
+                            </ul>
+                            </li>
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Связаные ссылки</h3>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy"
+                    href="/ru-RU/server-deployment-assistant/wiki">
+                        Главная страница вики
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/Storik4pro/Server-Deployment-Assistant/issues">
+                        Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/server-deployment-assistant/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+    <script src="/js/faq.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ассистент Развертывания Сервера - Вики</title>
+    <link rel="icon" href="/images/ServerDeploymentAssistant48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">Файл конфигурации</h2>
+        
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="legacy-info-block">
+                    Файл конфигурации позволяет гибко настроить ваш Ассистент Развертывания Сервера 
+                    для вашего приложения.
+                    <br>
+                    <br>
+                    <div class="table-responsive">
+                        <table>
+                            <tr>
+                                <th>Группа параметров</th>
+                                <th>Ключ</th>
+                                <th>Тип</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">AudioStreamSettings</td>
+                                <td>AudioStreamPort</td>
+                                <td><b>int</b></td>
+                                <td>Порт, на котором следует запустить сервер для передачи звука</td>
+                            </tr>
+                            <tr>
+                                <td>UseAudioResampling</td>
+                                <td><b>bool</b></td>
+                                <td>Понижать ли частоту звука.</td>
+                            </tr>
+                            <tr>
+                                <td>AudioStreamResamplingRate</td>
+                                <td><b>int</b></td>
+                                <td>Целевая частота звука для понижения.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>UseAudioGzipCompress</td>
+                                <td><b>bool</b></td>
+                                <td>Использовать ли сжатие звука с помощью Gzip.</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">VideoStreamSettings</td>
+                                <td>VideoStreamPort</td>
+                                <td><b>int</b></td>
+                                <td>Порт, на котором следует запустить сервер WebSocket.</td>
+                            </tr>
+                            <tr>
+                                <td>UseVideoGzipCompress</td>
+                                <td><b>bool</b></td>
+                                <td>Использовать ли сжатие видео с помощью Gzip.</td>
+                            </tr>
+                            <tr>
+                                <td>ScalingFactor</td>
+                                <td><b>int</b></td>
+                                <td>Значение, на которое следует умножить ширину и 
+                                    высоту окна браузера.</td>
+                            </tr>
+                            <tr>
+                                <td>FullPageScreenshotQuality</td>
+                                <td><b>int</b></td>
+                                <td>Качество скриншотов для статического режима и миниатюр вкладок</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">BrowserSettings</td>
+                                <td>UserAgent</td>
+                                <td><b>string</b></td>
+                                <td>Строка кастомного агента пользователя</td>
+                            </tr>
+                            <tr>
+                                <td>FirstRunUrl</td>
+                                <td><b>string</b></td>
+                                <td>URL, который будет открыт при первом запуске браузера и 
+                                    при закрытии всех вкладок.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CachePath</td>
+                                <td><b>string</b></td>
+                                <td>Путь к папке, в которой будет храниться кэш браузера. 
+                                    Данный путь является относительным к папке, в которой находится
+                                    окружение приложения.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SearchSystem</td>
+                                <td><b>string</b></td>
+                                <td>Поисковая система, которая будет использоватся в тех 
+                                    случаях, когда в качестве URL был передан не валидный адрес.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    Если settings.xml отсутствует или его невозможно открыть,
+                    то будут использованы значения по умолчанию. 
+                    <br>
+                    <ul>
+                        <li><b>int</b> — 0</li>
+                        <li><b>float</b> — 10.0</li>
+                        <li><b>string</b> — NaN</li>
+                        <li><b>bool</b> — false</li>
+                        <li>Для других типов стандартными значениями являются стандартные для 
+                            языка C# значения по умолчанию.
+                        </li>
+                    </ul>
+                    <br>
+                    <div class="legacy-warning">
+                        Если Server Deployment Assistant используется в качестве 
+                        движка для другого серверного приложения, то файл конфигурации 
+                        можно указать через параметр командной строки 
+                        <code>--set-xml-settings-file &lt;path&gt;</code>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Связаные ссылки</h3>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy"
+                    href="/ru-RU/server-deployment-assistant/wiki">
+                        Главная страница вики
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/Storik4pro/Server-Deployment-Assistant/issues">
+                        Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/server-deployment-assistant/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+    <script src="/js/faq.js"></script>
+</body>
+</html>

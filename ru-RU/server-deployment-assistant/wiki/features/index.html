@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ассистент Развертывания Сервера - Вики</title>
+    <link rel="icon" href="/images/ServerDeploymentAssistant48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">Общие сведения о текущих возможностях</h2>
+        
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="legacy-info-block">
+                    Версия 1.0.0.0
+                    <div class="legacy-warning">
+                        <ul>
+                            <li>
+                                Потоковая передача аудио частотой 16000Гц через кастомный <code>IAudioHandler</code>. Аудио дополнительно 
+                                сжимается с использованием <code>gzip</code>. Аудио передается через отдельный <code>WebSocketServer</code>. 
+                                Как правило, для аудио используется выделенный порт 8082.
+                                <br>
+                                Каждый сэмпл аудио передается с незжатым <code>header</code>. В качестве Int32 значения передается <code>sequence</code>, 
+                                в качестве Int64 - <code>ptc</code> (измеряется в микросекундах). 
+                                <br>
+                                Я так же рекомендую создать кстомный JitterBuffer для отслеживания отставания текущего пакета от 
+                                последнего полученного сервера. 
+                                <br>
+                                Ниже представлен примерный код клмента для получения и обработки звука
+                                <div class="code-block legacy-code-block" data-language="C#">
+                                    <pre><code>private void OnMessageReceived(MessageWebSocket sender, MessageWebSocketMessageReceivedEventArgs args)
+{
+    var reader = args.GetDataReader();
+    reader.ByteOrder = ByteOrder.LittleEndian;
+
+    if (reader.UnconsumedBufferLength < 12) return;
+    int seq = reader.ReadInt32();
+    long pts = reader.ReadInt64();
+
+    uint payloadLen = reader.UnconsumedBufferLength;
+    byte[] buf = new byte[payloadLen];
+    reader.ReadBytes(buf);
+
+    var msIn = new MemoryStream(buf);
+    var gzip = new GZipStream(msIn, CompressionMode.Decompress);
+    var msOut = new MemoryStream();
+    
+    gzip.CopyTo(msOut);
+    var pcm = msOut.ToArray();
+}</code></pre>
+                                </div>
+                                Вы так же можете посетить 
+                                <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://4pda.to/forum/index.php?showtopic=990430">
+                                    репозиторий Браузера Линии <span class="font-icon"></span>
+                                </a>и изучить механизм подробнее
+                            </li>
+                            <li>
+                                Передача скриншотов браузера при вызове <code>ChromiumWebBrowser.Paint</code>. Скриншоты так же сжимаются 
+                                с использованием <code>gzip</code>. Передача происходит побайтово и никак не маркируется
+                            </li>
+                            <li>
+                                Отправка скриншота всей страницы в формате Base64 строки. Маркируется
+                            </li>
+                            <li>
+                                Отправка сведений о текущем Uri
+                            </li>
+                            <li>
+                                Отправка сведений об открытых страницах
+                            </li>
+                            <li>
+                                Отправка сведений об изменении загаловка конкретной страницы
+                            </li>
+                            <li>
+                                Отправка сведений о тексте в текущем поле ввода
+                            </li>
+                            <li>
+                                Отправка сигнала, если ввод текста отменен страницей
+                            </li>
+                            <li>
+                                Отправка текстового сигнала о статусе загрузки страницы <code>LOADING</code>/<code>COMPLETE</code>
+                            </li>
+                            <li>
+                                Отправка сведений о возможности выполнить действие "Назад"
+                            </li>
+                            <li>
+                                Отправка сведений о возможности выполнить действие "Вперед"
+                            </li>
+                            <li>
+                                Получение от клиента контента, который следует вставить в текущий активный элемент
+                            </li>
+                            <li>
+                                Получение запроса на отправку полного скриншота страницы (Статический режим)
+                            </li>
+                            <li>
+                                Получение сведений о режиме обновления <code>Staic</code>/<code>Dynamic</code>
+                            </li>
+                            <li>
+                                Получение сведений об отправке на активный элемент ввода KeyCode
+                            </li>
+                            <li>
+                                Получение сведений об отправке на активный элемент ввода Char (Предпочтительный вариант)
+                            </li>
+                            <li>
+                                Получение сведений о нажатии на клавиши действий
+                            </li>
+                            <li>
+                                Получение сведений о текущей активной странице
+                            </li>
+                            <li>
+                                Навигация. Используйте <code>skipchk:</code>, чтобы пропустить встроенную проверку на 
+                                корректность адреса
+                            </li>
+                            <li>
+                                Навигация назад
+                            </li>
+                            <li>
+                                Навигация вперед
+                            </li>
+                            <li>
+                                Изменение размера окна браузера
+                            </li>
+                            <li>
+                                Обработка события TouchDown
+                            </li>
+                            <li>
+                                Обработка события TouchUp
+                            </li>
+                            <li>
+                                Обработка события TouchMove
+                            </li>
+                            <li>
+                                Обработка запроса на отправку всех активных вкладок 
+                            </li>
+                            <li>
+                                Обработка запроса на отправку скриншота определенной вкладки
+                            </li>
+                            <li>
+                                Обработка запроса на закрытие определенной вкладки
+                            </li>
+                            <li>
+                                Обработка запроса на открытие URL в новой вкладке. Проверка URL на этом этапе не происходит.
+                            </li>
+                            <li>
+                                Обработка запроса на отправку скриншота в обход событию Paint 
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Связаные ссылки</h3>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy"
+                    href="/ru-RU/server-deployment-assistant/wiki">
+                        Главная страница вики
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/Storik4pro/Server-Deployment-Assistant/issues">
+                        Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/server-deployment-assistant/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+    <script src="/js/faq.js"></script>
+</body>
+</html>
