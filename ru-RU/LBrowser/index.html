@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Браузер Линии</title>
+    <link rel="icon" href="/images/LBrowser48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">БРАУЗЕР ЛИНИИ</h2>
+        <div class="legacy-warning">
+            <p>This page also availible on <a class="link-legacy" href="/en-US/LBrowser">english</a></p>
+        </div>
+        <h3 class="legacy">Добро пожаловать на главную страницу проекта для языка русский!</h3>
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE946;</span>
+                    <h3 class="legacy">Подробности о проекте</h3>
+                </div>  
+                <div class="legacy-info-block">
+                    <p>
+                        <strong>Браузер Линии</strong> — это решение формата «Browser as a Service», 
+                        которое позволяет пользоваться современным Интернетом на устройствах с Windows 10 Mobile<sup>1</sup>. 
+                        В отличие от других браузеров для этой платформы, Браузер Линии не использует устаревший движок EdgeHTML.
+                    </p>
+                    <p>
+                        Для работы требуется компьютер с Windows 10 или 11, находящийся в одной сети с 
+                        телефоном<sup>2</sup>. Вся обработка веб-страниц происходит на компьютере, а телефон 
+                        используется только для отображения изображения, воспроизведения звука<sup>3</sup> и передачи пользовательских команд. 
+                        Таким образом, смартфон выступает в роли удалённого терминала, а основная нагрузка ложится на ПК<sup>4</sup>.
+                    </p>
+                    <hr>
+                    <small>
+                        <sup>1</sup> Качество передачи изображения и звука зависит от пропускной способности вашей сети.<br>
+                        <sup>2</sup> Вы также можете настроить сервер на ПК с внешним IP-адресом для доступа из любой точки мира.<br>
+                        <sup>3</sup> Функция передачи звука находится в стадии бета-тестирования и может работать нестабильно.<br>
+                        <sup>4</sup> Несмотря на то что отрисовка сайтов происходит на сервере, постоянный обмен данными 
+                        всё ещё может нагружать телефон и разряжать батарею.
+                    </small>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Доступные разделы справки</h3>
+                </div>  
+                <div class="help-container">
+                    <form class="help-container-item"
+                            action="wiki">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Официальная вики</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy"
+                                href="wiki">
+                                    Перейти<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                    <form class="help-container-item" target="_blank" rel="noopener noreferrer" 
+                            action="wiki/what-i-need-to-do-for-start">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Начало работы</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                                href="wiki/what-i-need-to-do-for-start">
+                                    Перейти<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                    <form class="help-container-item" target="_blank" rel="noopener noreferrer" 
+                            action="wiki/sound">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Предварительное тестирование: Передача звука</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                                href="wiki/sound">
+                                    Перейти<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE7B8;</span>
+                    <h3 class="legacy">Загрузки</h3>
+                </div>  
+                <div class="help-container">
+                    <div class="help-container-item">
+                        <button class="legacy-button news-tile" type="button" data-modal-target="#download-LBR">
+                            <h2 class="legacy">Пакет приложения Браузер Линии (.appx)</h2>
+                            <p id="LBR-ver" class="ver-text">Loading ...</p>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy">
+                                    Показать варианты загрузки<span class="font-icon">&#xE896;</span>
+                                </a>
+                            </div>  
+                        </button>
+                    </div>
+                    <div class="help-container-item">
+                        <button class="legacy-button news-tile" type="button" data-modal-target="#download-SDA">
+                            <h2 class="legacy">Ассистент развертывания сервера (.exe)</h2>
+                            <p id="SDA-ver" class="ver-text">Loading ...</p>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy">
+                                    Показать варианты загрузки<span class="font-icon">&#xE896;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xEC7A;</span>
+                    <h3 class="legacy">Другие возможности</h3>
+                </div> 
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/Storik4pro/LBrowser">
+                        Перейти на GitHub<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/Storik4pro/LBrowser/issues">
+                        Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <div id="download-SDA" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="SDA-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <button id="SDA-download" class="legacy-button">Download now</button>
+            </div>
+            <div class="modal-buttons-container">
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="download-LBR" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <h3 class="legacy">Download from store</h3>
+                <div class="legacy-warning">
+                    <p>Downloading from the store are not availible at the moment.</p>
+                </div>
+                <p><b class="separator">---OR---</b></p>
+                <h3 class="legacy">Download via manager</h3>
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="LBR-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <p class="choose-header">Choose file to download</p>
+                <div class="choose-language-container version-container">
+                    <select id="LBR-file-select" class="legacy-button selector" title="Select version">
+                        <option value="LinesBrowser_arm.cer">Application certificate (.cer)</option>
+                        <option value="LinesBrowser_arm.appxbundle" selected>Application bundle (.appxbundle)</option>
+                        <option value="LBrowser.zip">Application archive for installing via WUT (.zip)</option>
+                        <option value="SDA.zip">Server Deployment Assistant x64 (.exe)</option>
+                    </select>
+                </div>
+                <button id="LBR-download" class="legacy-button">Download now</button>
+                
+                
+            </div>
+            <div class="modal-buttons-container">
+                
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/modalScript.js"></script>
+    <script src="/cookieScript.js"></script>
+    <script src="/downloadHelper.js"></script>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>
