@@ -1,0 +1,53 @@
+<!-- index/ -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержка - GoodbyeDPI UI</title>
+    <link rel="icon" href="/app_icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <h2>Добро пожаловать!</h2>
+        <div id="quick-start" class="buttons">
+            <a href="/instruction" class="button">
+                <img src="/images/update_icon.png" alt="Логотип программы">
+                <div class="button-text">
+                    <h3>Быстрый старт</h3>
+                    <p>Подробная инструкция по установке goodbyeDPI UI и обновлении до версии 1.0.4</p>
+                </div>
+            </a>
+            
+        </div>
+        <div id="troubleshooting" class="buttons">
+            <a href="/wiki" class="button">
+                <div class="button-text">
+                    <h3>Справка и документация</h3>
+                    <p>Описание функций и их использования.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script>
+        fetch('../../templates/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
+</html>
