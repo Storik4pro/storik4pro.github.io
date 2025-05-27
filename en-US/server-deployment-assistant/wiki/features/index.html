@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Deployment Assistant - Wiki</title>
+    <link rel="icon" href="/images/ServerDeploymentAssistant48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <div class="legacy-warning">
+            This page is translated into your preferred language using AI. You can help improve the translation of this wiki!
+            <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/storik4pro.github.io">
+                Visit the wiki’s repo<span class="font-icon"></span>
+            </a>
+        </div>
+        <h2 class="legacy">Overview of Current Capabilities</h2>
+        
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="legacy-info-block">
+                    Version 1.0.0.0
+                    <div class="legacy-warning">
+                        <ul>
+                            <li>
+                                Streaming audio at 16 000 Hz via a custom <code>IAudioHandler</code>. Audio is additionally compressed using <code>gzip</code> and transmitted over a dedicated <code>WebSocketServer</code>, typically on port 8082.<br>
+                                Each audio sample is sent with an uncompressed <code>header</code>: an <code>Int32 sequence</code> followed by an <code>Int64 ptc</code> timestamp (in microseconds).<br>
+                                It is recommended to implement a custom JitterBuffer to track packet lag relative to the last received packet.<br>
+                                Below is an example client implementation for receiving and processing audio:
+                                <div class="code-block legacy-code-block" data-language="C#">
+                                    <pre><code>private void OnMessageReceived(MessageWebSocket sender, MessageWebSocketMessageReceivedEventArgs args)
+{
+    var reader = args.GetDataReader();
+    reader.ByteOrder = ByteOrder.LittleEndian;
+
+    if (reader.UnconsumedBufferLength < 12) return;
+    int seq = reader.ReadInt32();
+    long pts = reader.ReadInt64();
+
+    uint payloadLen = reader.UnconsumedBufferLength;
+    byte[] buf = new byte[payloadLen];
+    reader.ReadBytes(buf);
+
+    var msIn = new MemoryStream(buf);
+    var gzip = new GZipStream(msIn, CompressionMode.Decompress);
+    var msOut = new MemoryStream();
+    
+    gzip.CopyTo(msOut);
+    var pcm = msOut.ToArray();
+}</code></pre>
+                                </div>
+                                You can also visit the 
+                                <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://4pda.to/forum/index.php?showtopic=990430">
+                                    Line Browser repository<span class="font-icon"></span>
+                                </a> 
+                                for more details.
+                            </li>
+                            <li>
+                                Sending browser screenshots when <code>ChromiumWebBrowser.Paint</code> is called. Screenshots are compressed with <code>gzip</code>, sent byte-by-byte, and unmarked.
+                            </li>
+                            <li>
+                                Sending full-page screenshots as Base64 strings (marked).
+                            </li>
+                            <li>
+                                Sending current URI information.
+                            </li>
+                            <li>
+                                Sending information about open pages.
+                            </li>
+                            <li>
+                                Sending information about a specific page title change.
+                            </li>
+                            <li>
+                                Sending information about the text in the current input field.
+                            </li>
+                            <li>
+                                Sending a signal if text input was canceled by the page.
+                            </li>
+                            <li>
+                                Sending a text signal about page load status <code>LOADING</code>/<code>COMPLETE</code>.
+                            </li>
+                            <li>
+                                Sending information about back-navigation availability.
+                            </li>
+                            <li>
+                                Sending information about forward-navigation availability.
+                            </li>
+                            <li>
+                                Receiving content from the client to insert into the current active element.
+                            </li>
+                            <li>
+                                Receiving a request to send a full-page screenshot (static mode).
+                            </li>
+                            <li>
+                                Receiving information about update mode <code>Static</code>/<code>Dynamic</code>.
+                            </li>
+                            <li>
+                                Receiving information about sending a KeyCode to the active input element.
+                            </li>
+                            <li>
+                                Receiving information about sending a Char to the active input element (preferred option).
+                            </li>
+                            <li>
+                                Receiving information about action key presses.
+                            </li>
+                            <li>
+                                Receiving information about the current active page.
+                            </li>
+                            <li>
+                                Navigation. Use <code>skipchk:</code> to skip built-in URL validation.
+                            </li>
+                            <li>
+                                Navigate back.
+                            </li>
+                            <li>
+                                Navigate forward.
+                            </li>
+                            <li>
+                                Resize browser window.
+                            </li>
+                            <li>
+                                Handling TouchDown event.
+                            </li>
+                            <li>
+                                Handling TouchUp event.
+                            </li>
+                            <li>
+                                Handling TouchMove event.
+                            </li>
+                            <li>
+                                Handling request to send all active tabs.
+                            </li>
+                            <li>
+                                Handling request to send screenshot of a specific tab.
+                            </li>
+                            <li>
+                                Handling request to close a specific tab.
+                            </li>
+                            <li>
+                                Handling request to open URL in a new tab (no validation at this stage).
+                            </li>
+                            <li>
+                                Handling request to send screenshot bypassing the Paint event.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Related Links</h3>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" href="/en-US/server-deployment-assistant/wiki">
+                        Main Wiki Page
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/Server-Deployment-Assistant/issues">
+                        Report an Issue<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/server-deployment-assistant/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+    <script src="/js/faq.js"></script>
+</body>
+</html>

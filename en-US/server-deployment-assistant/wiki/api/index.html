@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Deployment Assistant - Wiki</title>
+    <link rel="icon" href="/images/ServerDeploymentAssistant48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <div class="legacy-warning">
+            This page is translated into your preferred language using AI. You can help improve the translation of this wiki!
+            <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/storik4pro.github.io">
+                Visit the wiki’s repo<span class="font-icon"></span>
+            </a>
+        </div>
+        <h2 class="legacy">API Explanation</h2>
+        <div class="legacy-warning">
+            This page needs to be expanded and simplified. You can contribute by editing this page on the 
+            <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/storik4pro.github.io">
+                this site's repository<span class="font-icon"></span>
+            </a>
+        </div>
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="legacy-info-block">
+                    <h3 class="legacy">Data Types and Their Purpose</h3>
+                    <div class="legacy-warning">
+                        This section lists the standard data types from the <code>System.Net.WebSockets</code> namespace in <code>.NET Framework 4.8</code>. For more details on available data types and their purposes, see the official documentation. For simplicity, the <code>System.Net.WebSockets</code> prefix is omitted in the following examples.
+                    </div>
+                    When connecting to the main server:
+                    <ul>
+                        <li>
+                            <code>WebSocketMessageType.Binary</code> is used to send video when a <code>Paint</code> event fires or upon a user request for a page screenshot.<br>
+                            Data is sent as an unmarked byte array.<br>
+                            Data may be compressed with <code>GZip</code> or sent uncompressed, depending on the <code>VideoStreamSettings/UseVideoGzipCompress</code> setting in <code>settings.xml</code>.
+                        </li>
+                        <li>
+                            <code>WebSocketMessageType.Text</code> is used to send textual messages. Text messages contain JSON data, which may include browser state information and some marked-up images.
+                        </li>
+                    </ul>
+                    When connecting to the audio transmission server:
+                    <ul>
+                        <li>
+                            <code>WebSocketMessageType.Binary</code> is used to send audio data.<br>
+                            Data is sent as a marked byte array.<br>
+                            Regardless of settings, each packet always includes a fixed-size 12-byte header consisting of two fields:<br>
+                            <ul>
+                                <li><b>uint</b> (4 bytes) — packet sequence number (32-bit integer)</li>
+                                <li><b>ulong</b> (8 bytes) — timestamp in nanoseconds (64-bit integer)</li>
+                            </ul>
+                            After the header comes the stream of PCM audio data.<br>
+                            The sample rate may be reduced to save data under the <code>AudioStreamSettings/AudioSampleRate</code> and <code>AudioStreamSettings/UseAudioResampling</code> settings in <code>settings.xml</code>.<br>
+                            Data may be compressed with <code>GZip</code> or sent uncompressed, depending on the <code>AudioStreamSettings/UseAudioGzipCompress</code> setting in <code>settings.xml</code>.
+                        </li>
+                    </ul>
+                    <br>
+                    <h3 class="legacy">Text Data Packet</h3>
+                    A packet has the following format:
+                    <div class="code-block legacy-code-block" data-language="C#">
+                        <pre>
+<code>{
+    PType: int32|string,  // packet type
+    PData: string,        // packet data as a string: JSON with browser state or marked-up image, or a plain text message
+}</code></pre>
+                    </div>
+                    The <code>PType</code> field may take the following values depending on the packet’s destination.<br>
+                    If sent from server to client and <code>PType</code> is <b>int32</b>:
+                    <ul>
+                        <li><code>0 (NavigatedUrl)</code> — current URL info</li>
+                        <li><code>1 (TextInputContent)</code> — current content in the active input field</li>
+                        <li><code>2 (TextInputSend)</code> — sent input text (not used)</li>
+                        <li><code>3 (TextInputCancel)</code> — no data; indicates the field no longer exists or is inactive</li>
+                        <li><code>4 (LoadingStateChanged)</code> — page loading state (<code>LOADING</code> or <code>COMPLETE</code>)</li>
+                        <li><code>5 (OpenPages)</code> — open pages list; entries separated by <code>;</code>, each entry: <code>Title|Id</code></li>
+                        <li><code>6 (EditOpenTabTitle)</code> — current tab title; format <code>Id|NewTitle</code></li>
+                        <li><code>7 (IsClientCanSendGoBackRequest)</code> — <code>true</code>/<code>false</code> indicating back navigation availability</li>
+                        <li><code>8 (IsClientCanSendGoForwardRequest)</code> — <code>true</code>/<code>false</code> indicating forward navigation availability</li>
+                    </ul>
+                    <hr>
+                    Custom <code>PType</code> values without numeric IDs (they are <b>string</b>):
+                    <ul>
+                        <li><code>FullPageScreenshot</code>
+                            <ul>
+                                <li><b>ChunkIndex</b> (int) — zero-based chunk index</li>
+                                <li><b>TotalChunks</b> (int) — total number of chunks</li>
+                                <li><b>Data</b> (string) — Base64 image data (no GZip)</li>
+                            </ul>
+                        </li>
+                        <li><code>TabScreenshot</code>
+                            <ul>
+                                <li><b>TabId</b> (long) — target tab ID</li>
+                                <li><b>Data</b> (string) — Base64 image data (no GZip)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="legacy-warning">
+                        Note: <code>PType</code> may be either <b>int32</b> or <b>string</b>. Check the data type to avoid processing errors.
+                    </div>
+                    <br>
+                    <div class="legacy-warning">
+                        FullPageScreenshot and TabScreenshot have no compression settings, but you can adjust image quality via <code>VideoStreamSettings/FullPageScreenshotQuality</code> in <code>settings.xml</code>.
+                    </div>
+                    <br>
+                    If sent from client to server [<code>PType</code> is always <b>int32</b>]:
+                    <ul>
+                        <li><code>0 (Navigation)</code> — send a URL or search text; prefix with <code>skipchk:</code> to skip URL validation. The <code>BrowserSettings/SearchSystem</code> setting in <code>settings.xml</code> controls fallback search engine.</li>
+                        <li><code>1 (SizeChange)</code> — resize browser window to new <b>Size</b> (Width, Height), multiplied by <code>scalingFactor</code> from <code>VideoStreamSettings/ScalingFactor</code>.</li>
+                        <li><code>2 (TouchDown)</code> — send a touch-down event as <b>PointerPacket</b>.</li>
+                        <li><code>3 (TouchUp)</code> — send a touch-up event as <b>PointerPacket</b>.</li>
+                        <li><code>4 (TouchMoved)</code> — send a touch-move event; <b>PointerPacket</b> has <code>px</code>, <code>py</code>, and <code>id</code>.</li>
+                        <li><code>5 (ACK)</code> — send ACK packet; server ignores it.</li>
+                        <li><code>6 (Frame)</code> — server ignores it.</li>
+                        <li><code>7 (TextInputSend)</code> — send text to active element and press <code>0x0D</code>.</li>
+                        <li><code>8 (NavigateForward)</code> — navigate forward if possible.</li>
+                        <li><code>9 (NavigateBack)</code> — navigate back if possible.</li>
+                        <li><code>10 (SendKey)</code> — send a keycode (int) to the active input.</li>
+                        <li><code>11 (RequestFullPageScreenshot)</code> — request a full-page screenshot.</li>
+                        <li><code>12 (ModeChange)</code> — send <code>Static</code> or <code>Dynamic</code> mode.</li>
+                        <li><code>13 (SetActivePage)</code> — activate tab by ID and request its snapshot.</li>
+                        <li><code>14 (GetTabsOpen)</code> — request list of open tabs.</li>
+                        <li><code>15 (CloseTab)</code> — close tab by ID; if none remain, open <code>FirstRunUrl</code> (<code>BrowserSettings/FirstRunUrl</code>).</li>
+                        <li><code>16 (RequestTabScreenshot)</code> — request a screenshot of the specified tab.</li>
+                        <li><code>17 (OpenUrlInNewTab)</code> — open URL in new tab without validation.</li>
+                        <li><code>18 (NewScreenShotRequest)</code> — force send screenshot to client.</li>
+                        <li><code>19 (IsCanGoBack)</code> — request back-navigation availability; ignored by server.</li>
+                        <li><code>20 (IsCanGoForward)</code> — request forward-navigation availability; ignored by server.</li>
+                        <li><code>21 (SendKeyCommand)</code> — send a specific key action (<code>Enter</code>/<code>Backspace</code>).</li>
+                        <li><code>22 (SendChar)</code> — send a character via <b>KeyCharPacket</b> (JSONData, Shift, Ctrl, Alt, Layout).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Related Links</h3>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" href="/en-US/server-deployment-assistant/wiki">
+                        Main Wiki Page
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/Server-Deployment-Assistant/issues">
+                        Report an Issue<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/server-deployment-assistant/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+    <script src="/js/faq.js"></script>
+</body>
+</html>

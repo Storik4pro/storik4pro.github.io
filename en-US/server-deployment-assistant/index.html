@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Deployment Assistant</title>
+    <link rel="icon" href="/images/ServerDeploymentAssistant48x48.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">SERVER DEPLOYMENT ASSISTANT</h2>
+        <div class="legacy-warning">
+            <p>This page is also available in <a class="link-legacy" href="/ru-RU/server-deployment-assistant/">Russian</a></p>
+        </div>
+        <br>
+        <div class="legacy-warning">
+            This page is translated into your preferred language using AI. You can help improve the translation of this wiki!
+            <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/storik4pro.github.io">
+                Visit the wiki’s repo<span class="font-icon"></span>
+            </a>
+        </div>
+        <h3 class="legacy">Welcome to the project’s main page for the Russian language!</h3>
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE946;</span>
+                    <h3 class="legacy">Project Details</h3>
+                </div>
+                <div class="legacy-info-block">
+                    <p>
+                        <strong>Server Deployment Assistant</strong> is a server-side solution for Browser-as-a-Service applications.
+                    </p>
+                    <p>
+                        Currently the Assistant isn’t fully generic. Although you can configure some settings via the <code>settings.xml</code> file, functionality is limited.  
+                        However, you can already build your own Browser-as-a-Service application based solely on the existing Assistant code, without modifying it.  
+                        I recommend updating <code>settings.xml</code> so that port numbers and the CefSharp cache path are unique—this lets users run multiple solutions on one device.
+                    </p>
+                    <p>
+                        The Assistant is under active development. The main goal is to create a universal tool that any developer can use to build WebView-like applications—e.g., a WhatsApp client.
+                    </p>
+                    <p>
+                        Help the project grow—report issues and suggest new features!  
+                        Note that the ultimate aim is to create a shared server for fans of legacy mobile systems, bringing them back to life, even if only briefly. If you have ideas on how to achieve this, start a discussion outlining your proposal.
+                    </p>
+                    <hr>
+                    <p>
+                        <strong>Server Deployment Assistant</strong> is an open-source developer tool. You may use it freely, provided you follow these guidelines:
+                        <ul>
+                            <li>
+                                You may not sell the Assistant or its modifications. You may still monetize your client application as you wish.
+                                <div class="legacy-warning">
+                                    For example: you create MyApp that uses the Assistant and charge $0.99 for MyApp. That’s fine—but you must make your modified Assistant itself available for free.
+                                </div>
+                            </li>
+                            <li>
+                                If your application uses the Assistant or its modifications, you must credit the specific Assistant version on your “About” page.
+                                <div class="legacy-warning">
+                                    For example: “Powered by Server Deployment Assistant”
+                                </div>
+                            </li>
+                            <li>
+                                Do not use the name “Server Deployment Assistant” as a primary branding element of your application—no app titles or marketing emphasis implying exclusivity.
+                            </li>
+                        </ul>
+                        <div class="legacy-warning">
+                            <i>
+                                Note: monetizing a Windows 10 Mobile app itself is largely futile—but nothing stops your client from targeting modern OSes, so these rules still matter. :-)
+                            </i>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE71B;</span>
+                    <h3 class="legacy">Available Help Sections</h3>
+                </div>
+                <div class="help-container">
+                    <form class="help-container-item" action="wiki">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Official Wiki</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy" href="wiki">
+                                    Go to<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                    <form class="help-container-item" action="wiki/api">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">API Requests</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy" href="wiki/api">
+                                    Go to<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                    <form class="help-container-item" action="wiki/features">
+                        <button class="legacy-button news-tile">
+                            <h2 class="legacy">Overview of Current Capabilities</h2>
+                            <div class="link-legacy-container">
+                                <a class="link-legacy" href="wiki/features">
+                                    Go to<span class="font-icon">&#xE76C;</span>
+                                </a>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xE7B8;</span>
+                    <h3 class="legacy">Downloads</h3>
+                </div>
+                <div class="help-container">
+                    <button class="legacy-button news-tile" type="button" data-modal-target="#download-SDA">
+                        <h2 class="legacy">Server Deployment Assistant (.exe)</h2>
+                        <p id="SDA-ver" class="ver-text">Loading ...</p>
+                        <div class="link-legacy-container">
+                            <a class="link-legacy">
+                                Show download options<span class="font-icon">&#xE896;</span>
+                            </a>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div class="sub-title-container">
+                    <span class="font-icon">&#xEC7A;</span>
+                    <h3 class="legacy">Other Resources</h3>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/Server-Deployment-Assistant">
+                        View on GitHub<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+                <div class="link-legacy-container">
+                    <a class="link-legacy" target="_blank" rel="noopener noreferrer" href="https://github.com/Storik4pro/Server-Deployment-Assistant/issues">
+                        Report an Issue<span class="font-icon">&#xE8A7;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <div id="download-SDA" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="SDA-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <button id="SDA-download" class="legacy-button">Download now</button>
+            </div>
+            <div class="modal-buttons-container">
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script src="/modalScript.js"></script>
+    <script src="/downloadHelper.js"></script>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('../../templates/__legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
