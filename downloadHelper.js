@@ -5,33 +5,35 @@ const LBRVer = document.getElementById('LBR-ver');
 var version = '0.0.0';
 var downloadUri = `https://github.com/${owner}/${LBrowserRepo}/releases/download/v${version}/LinesBrowser_arm.appxbundle`;
 
-fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${LBrowserRepo}/`)
-    .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-    })
-    .then(info => {
-        LBRVer.textContent = `Version ${info.versions[0]}`;
-    })
-    .catch(err => {
-        console.error(err);
-        LBRVer.textContent = 'Versions list is not available';
-    });
-
+if (LBRVer) {
+    fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${LBrowserRepo}/`)
+        .then(res => {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.json();
+        })
+        .then(info => {
+            LBRVer.textContent = `Version ${info.versions[0]}`;
+        })
+        .catch(err => {
+            console.error(err);
+            LBRVer.textContent = 'Versions list is not available';
+        });
+}
 const SDAVer = document.getElementById('SDA-ver');
-fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${SDARepo}/`)
-    .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-    })
-    .then(info => {
-        SDAVer.textContent = `Version ${info.versions[0]}`;
-    })
-    .catch(err => {
-        console.error(err);
-        SDAVer.textContent = 'Versions list is not available';
-    });
-
+if (SDAVer) {
+    fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${SDARepo}/`)
+        .then(res => {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.json();
+        })
+        .then(info => {
+            SDAVer.textContent = `Version ${info.versions[0]}`;
+        })
+        .catch(err => {
+            console.error(err);
+            SDAVer.textContent = 'Versions list is not available';
+        });
+}
 const select = document.getElementById('LBR-ver-select');
 
 var widgets = [
@@ -91,22 +93,25 @@ widgets.forEach(function (w) {
     loadVersions(w.owner, w.repo, function (data) {
         var versions = data.versions || [];
         versions.sort(compareSemver);
-        sel.innerHTML = '';
-        if (versions.length === 0) {
-            var o = document.createElement('option');
-            o.text = 'Not found';
-            o.disabled = true;
-            sel.add(o);
-            return;
+        if (sel) {
+            sel.innerHTML = '';
+            if (versions.length === 0) {
+                var o = document.createElement('option');
+                o.text = 'Not found';
+                o.disabled = true;
+                sel.add(o);
+                return;
+            }
+            for (var i = 0; i < versions.length; i++) {
+                var v = versions[i];
+                var o = document.createElement('option');
+                o.value = v;
+                o.text = v;
+                if (data.version && v === data.version) o.selected = true;
+                sel.add(o);
+            }
         }
-        for (var i = 0; i < versions.length; i++) {
-            var v = versions[i];
-            var o = document.createElement('option');
-            o.value = v;
-            o.text = v;
-            if (data.version && v === data.version) o.selected = true;
-            sel.add(o);
-        }
+        
     }, function (err) {
         sel.innerHTML = '';
         var o = document.createElement('option');
@@ -115,27 +120,28 @@ widgets.forEach(function (w) {
         sel.add(o);
         console.error('Cannot load versions for', w.repo, err);
     });
-
-    btn.onclick = function () {
-        var version = sel.value;
-        if (!version || version === 'NaN') {
-            alert('You must select version for ' + w.repo + ' firstly.');
+    if (btn) {
+        btn.onclick = function () {
+            var version = sel.value;
+            if (!version || version === 'NaN') {
+                alert('You must select version for ' + w.repo + ' firstly.');
+                return false;
+            }
+            var fileName;
+            if (fileSel) {
+                fileName = fileSel.value;
+            } else {
+                fileName = 'SDA.zip';
+            }
+            var url = 'https://github.com/' +
+                encodeURIComponent(w.owner) + '/' +
+                encodeURIComponent(w.repo) +
+                '/releases/download/v' +
+                encodeURIComponent(version) + '/' +
+                encodeURIComponent(fileName);
+            window.location.href = url;
             return false;
-        }
-        var fileName;
-        if (fileSel) {
-            fileName = fileSel.value;
-        } else {
-            fileName = 'SDA.zip';
-        }
-        var url = 'https://github.com/' +
-            encodeURIComponent(w.owner) + '/' +
-            encodeURIComponent(w.repo) +
-            '/releases/download/v' +
-            encodeURIComponent(version) + '/' +
-            encodeURIComponent(fileName);
-        window.location.href = url;
-        return false;
-    };
+        };
+    }
 });
 
