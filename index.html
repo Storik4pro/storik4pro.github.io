@@ -267,13 +267,13 @@
 
     <div id="footer"></div>
     <script>
-        fetch('../../templates/__legacyHeader.html')
+        fetch('../../templates/legacyHeader.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             });
 
-        fetch('../../templates/__legacyFooter.html')
+        fetch('../../templates/legacyFooter.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer').innerHTML = data;
