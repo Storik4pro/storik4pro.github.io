@@ -22,7 +22,7 @@
                     <ul>
                         <li>
                             Скачайте и установите <code>ассистент&nbsp;развертывания&nbsp;сервера</code> (далее - Ассистент), 
-                            используя <a class="link-legacy" href="#">
+                            используя <a class="link-legacy" data-modal-target="#download-SDA" href="#">
                                 эту ссылку<span class="font-icon">&#xE8A7;</span>
                             </a>
                         </li>
@@ -37,7 +37,7 @@
                         </li>
                         <li>
                             Скачайте и установите Браузер Линии по 
-                            <a class="link-legacy" href="#">этой ссылке 
+                            <a class="link-legacy" data-modal-target="#download-LBR" href="#">этой ссылке 
                                 <span class="font-icon">&#xE8A7;</span></a>.
                             Если вы ещё не устанавливали приложения на Windows 10 Mobile, 
                             ознакомьтесь с 
@@ -89,6 +89,61 @@
     </div>
 
     <div id="footer"></div>
+    <div id="download-SDA" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="SDA-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <button id="SDA-download" class="legacy-button">Download now</button>
+            </div>
+            <div class="modal-buttons-container">
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="download-LBR" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">Download manager</h2>
+            
+            <div class="modal-scroll">
+                <h3 class="legacy">Download from store</h3>
+                <div class="legacy-warning">
+                    <p>Downloading from the store are not availible at the moment.</p>
+                </div>
+                <p><b class="separator">---OR---</b></p>
+                <h3 class="legacy">Download via manager</h3>
+                <p class="choose-header">Choose version to download via download manager.</p>
+                <div class="choose-language-container version-container">
+                    <select id="LBR-ver-select" class="legacy-button selector" title="Select version">
+                        <option value="NaN" selected>Loading ...</option>
+                    </select>
+                </div>
+                <p class="choose-header">Choose file to download</p>
+                <div class="choose-language-container version-container">
+                    <select id="LBR-file-select" class="legacy-button selector" title="Select version">
+                        <option value="LinesBrowser_arm.cer">Application certificate (.cer)</option>
+                        <option value="LinesBrowser_arm.appxbundle" selected>Application bundle (.appxbundle)</option>
+                        <option value="LBrowser.zip">Application archive for installing via WUT (.zip)</option>
+                        <option value="SDA.zip">Server Deployment Assistant x64 (.exe)</option>
+                    </select>
+                </div>
+                <button id="LBR-download" class="legacy-button">Download now</button>
+                
+                
+            </div>
+            <div class="modal-buttons-container">
+                
+                <button class="modal-close legacy-button">OK</button>
+            </div>
+        </div>
+    </div>
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-title-banner">
             <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
@@ -101,6 +156,8 @@
         </p>
         <button id="accept-cookies" class="legacy-button">OK</button>
     </div>
+    <script src="/modalScript.js"></script>
+    <script src="/downloadHelper.js"></script>
     <script src="/cookieScript.js"></script>
     <script>
         fetch('/ru-RU/LBrowser/header.html')
