@@ -1203,6 +1203,11 @@ b.separator {
 .modal-scroll h3 {
     margin: 0;
 }
+
+.store-badge {
+    width: 190px;
+}
+
 @media screen and (max-width: 600px) {
     .cookie-banner {
         bottom: 0;
