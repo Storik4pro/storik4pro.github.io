@@ -854,6 +854,7 @@ b {
     overflow-y: none;
     overflow-x:scroll;
     display: flex;
+    column-gap: 10px;
 }
 
 .news-tile {
