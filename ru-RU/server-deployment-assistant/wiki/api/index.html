@@ -106,6 +106,20 @@
                             Содержит <b>string</b> с возможными значениями <code>true/false</code></li>
                         <li><code>8 (IsClientCanSendGoForwardRequest)</code> — Пакет с данными о возможности перейти на страницу вперед.
                             Содержит <b>string</b> с возможными значениями <code>true/false</code></li>
+                        <li><code>9 (Handshake)</code> — Пакет с данными о сервере и поддерживаемыми функциями. Содержит <b>HandshakePacket</b>
+                            <br>
+                            Структура <b>HandshakePacket</b>:
+                            <ul>
+                                <li><code>ServerVersion</code> <b>string</b>: Текущая версия сервера</li>
+                                <li><code>Features</code> <b>string[]</b>: Текущие возможности сервера</li>
+                            </ul>
+                        </li>
+                        <li><code>10 (ConnectionState)</code> — Пакет с данными о текущем сертификате подключения к сайту. Содержит <b>ConnectionSecurePacket</b>
+                            <br>
+                            Структура <b>ConnectionSecurePacket</b>:
+                            <br>
+                            <a class="link-legacy" href="https://github.com/Storik4pro/Server-Deployment-Assistant/blob/main/src/Network/Packets.cs">Посмотрите дополнительные сведения о ConnectionSecurePacket</a>
+                        </li>
                     </ul>
                     <hr>
                     Кастомные значения <code>PType</code>, которым не присвоен id. Является <b>string</b>:
@@ -207,6 +221,7 @@
                                     если у языка нет кода региона, например, <code>ru</code>.</li>
                             </ul>
                             </li>
+                        <li><code>23 (RequestCert)</code> — Запрашивает у сервера информацию о сертификате активного сайта</li>
                     </ul>
                     
                     
