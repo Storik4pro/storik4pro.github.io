@@ -13,7 +13,7 @@ function readTextFile(file, callback) {
 const flexContainer = document.querySelector('.flex-container');
 flexContainer.innerHTML = ""; 
 
-const wikiPages = readTextFile("/en-us/cdpiui/wiki/data.json", function(text){
+const wikiPages = readTextFile("/en-US/cdpiui/wiki/data.json", function(text){
     data = JSON.parse(text);
 
     data.data.forEach(group => {
