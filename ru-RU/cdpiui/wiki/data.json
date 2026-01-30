@@ -31,6 +31,10 @@
                 {
                     "title": "\"Этот элемент на данный момент не поддерживается\"",
                     "href": "Store\\ItemUnsupportedWarning"
+                },
+                {
+                    "title": "Средство контроля версий",
+                    "href": "Store\\PreferedVersionControl"
                 }
             ],
             "name": "Магазин компонентов"
