@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - ru</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Первые шаги</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Это руководство позволит вам изучить основы использования CDPI UI и настроить его под себя.</p>
+<ul>
+<li>
+<p><strong>Скачайте первый компонент из Магазина.</strong> Перейдите в Магазин компонентов, чтобы скачать нужный вам компонент. На момент написания этого руководства готовые наборы пресетов существуют только для Zapret. <br />
+ByeDPI требует подбора пресета через GoodCheck (найти GoodCheck можно в разделе "Надстройки" Магазина).</p>
+</li>
+<li>
+<p><strong>Подготовьте скачанный компонент к работе.</strong> Перейдите на страницу настройки установленного компонента и выберите предпочитаемый пресет (компонент автоматически перезапустится после изменения пресета, если<br />
+ранее он был запущен). Также не забывайте, что некоторые приложения и службы требуется перезапустить для получения достоверной информации о их доступности.</p>
+</li>
+<li>
+<p><strong>Настройте автозапуск компонента.</strong> Для настройки автозапуска необходимо произвести несколько простых действий. Для начала включите автозапуск графического интерфейса, используя переключатель <br />
+[Открывать приложение при запуске ПК] на странице [Параметры] в главном окне. Затем перейдите к настройкам установленного компонента и поставьте галочку [Запускать автоматически] в положение ВКЛ.</p>
+</li>
+</ul>
+<p>Примите мои поздравления! Настройка приложения была успешно завершена.</p>
+<p>Если в будущем некоторые сервисы станут недоступны, то:</p>
+<ul>
+<li>
+<p><strong>Проверьте наличие обновлений.</strong> Перейдите на страницу [Загрузки] в Магазине и проверьте наличие элементов, которые следует обновить. Обновите их, если это потребуется.</p>
+</li>
+<li>
+<p><strong>Подберите пресет.</strong> Снова пройдитесь по списку пресетов — может, один из них заработает.</p>
+</li>
+<li>
+<p><strong>Воспользуйтесь подбором через GoodCheck.</strong> Подберите рабочий пресет через GoodCheck — перейдите на страницу [Утилиты] и запустите подбор, нажав на [Автоматическая утилита создания пресета]. <br />
+Для подбора необходимо иметь установленную надстройку "GoodCheck".</p>
+</li>
+</ul>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Связанные ссылки</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/ru-RU\cdpiui\wiki">
+                            Главная страница вики
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

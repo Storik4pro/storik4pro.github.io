@@ -1,0 +1,109 @@
+<!-- index/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI — Wiki</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+
+    <div class="legacy-container">
+        <h2 class="legacy">Make you own article for this wiki</h2>
+
+        <div class="flex-container">
+            <div class="flex-container-item">
+                <div class="legacy-info-block">
+                    <p>
+                        <h3>Before sending article</h3>    
+                        <ul>
+                            <li>You don't use any obscene language</li>
+                            <li>Article format is markdown (.md)</li>
+                            <li>Article contains description for feature or guide</li>
+                            <li>Article language is Russian or English</li>
+                        </ul>
+                        <h3>Sending article</h3> 
+                        Send you article to 
+                            <a class="link-legacy" href="mailto:storik4.20@gmail.com">
+                                <div class="font-icon">&#xE715;</div>Developer's E-Mail</a>
+                        with some info: 
+                        <ul>
+                            <li>Article language (RU/EN)</li>
+                            <li>Article name</li>
+                            <li>Article category</li>
+                            <li>Name you want to place to wiki's acknowledgements</li>
+                            <li>Application version this article applied to</li>
+                        </ul>
+                    </p>
+                </div>  
+            </div>  
+        </div>  
+       
+
+        <div class="flex-container">
+            
+        </div>
+    </div>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+
+    <div id="lang-modal" class="modal" >
+        <div class="modal-content">
+            <h2 class="legacy">What language do you prefer?</h2>
+            <div class="modal-scroll">
+                <div class="choose-language-container">
+                    <select id="lang-select" class="legacy-button" title="Select language">
+                        <option value="en" selected>English</option>
+                        <option value="ru">Russian (Русский)</option>
+                    </select>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="lang-remember"> 
+                        <span class="checkmark"></span> Don't ask again
+                    </label>
+                </div>
+            </div>
+            <div class="modal-buttons-container">
+                <button id="lang-confirm" class="legacy-button modal-button">OK</button>
+                <button class="modal-close legacy-button">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="footer"></div>
+    <script>
+        fetch('/templates/legacyHeader.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+    <script src="/modalScript.js"></script>
+    <script src="/cookieScript.js"></script>
+</body>
+</html>

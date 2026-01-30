@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - ru</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Возможные ошибки при запуске компонентов и их решение</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <h3>Прежде чем начать работу</h3>
+<p>Для начала узнайте код ошибки. Обычно он отображается в верхней части окна [Псевдоконсоль] в меню "Этот компонент завершил работу с ошибкой: &lt;Код Исключения&gt;"</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Код исключения</th>
+<th>Описание</th>
+<th>Возможные варианты исправления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PARAMETER_ERROR</td>
+<td>Флаг, переданный компоненту не поддерживается</td>
+<td>Обновите используемый компонент до последней версии<br>Убедитесь, что для компонента выбран пресет, и он не является пустым<br>Если вы создавали пресет вручную, то перечитайте официальную документацию компонента. Возможно, некоторые из указаных флагов не поддерживаются на вашей платформе.</td>
+</tr>
+<tr>
+<td>FILTER_OPEN_ERROR</td>
+<td>Не удалось запустить фильтр WinDivert</td>
+<td>Выполните переустановку компонента<br>Убедитесь, что в пресете компонента указаны корректные данные для портов<br>Убедитесь, что ничего не блокирует управление трафиком на вашем ПК.</td>
+</tr>
+<tr>
+<td>HOSTLIST_LOAD_ERROR<br>FILE_READ_ERROR</td>
+<td>Не удалось загрузить список сайтов</td>
+<td>Выполните переустановку набора пресетов<br>Убедитесь, что все используемые в пресете списки сайтов/IP-адресов существуют в папке набора.</td>
+</tr>
+<tr>
+<td>PORT_FILTER_ERROR</td>
+<td>WinDivert не смог определить порт для запуска</td>
+<td>Убедитесь, что в пресете компонента указаны корректные данные для портов.</td>
+</tr>
+<tr>
+<td>COMPONENT_INSTALL_ERROR</td>
+<td>Компонент установлен неправильно</td>
+<td>Выполните переустановку компонента.</td>
+</tr>
+<tr>
+<td>INVALID_VALUE_ERROR</td>
+<td>Переданное значение флага не является корректным</td>
+<td>Обновите используемый компонент до последней версии<br>Если вы создавали пресет вручную, то перечитайте официальную документацию компонента. Возможно, некоторые из указаных флагов и их значений не поддерживаются на вашей платформе.</td>
+</tr>
+<tr>
+<td>ALREADY_RUNNING_WARN</td>
+<td>Экземпляр WinDivert уже запущен на этом ПК</td>
+<td>Остановите службу WinDivert<br>Удалите или отключите все существующие средства обхода, кроме этого приложения.</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>Не удалось получить доступ к файлу</td>
+<td>Проверьте наличие прав "read" и "write" у приложения, исполняемого файла компонента и службы WinDivert в директории установки.</td>
+</tr>
+</tbody>
+</table></div>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Связанные ссылки</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/ru-RU\cdpiui\wiki">
+                            Главная страница вики
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

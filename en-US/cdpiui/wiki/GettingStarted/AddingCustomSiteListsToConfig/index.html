@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Add custom site to list for bypass</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>To change the list of URLs/IP addresses to be crawled, go to the preset settings for the component you're using.</p>
+<p>If the preset you're using uses site lists, you'll see the [Used Site Lists] widget. This widget lists all the sites to be crawled.<br />
+To edit them, simply click the [Edit] button next to the site/IP list name. The default .txt file editor will open for editing.</p>
+<p>You can also view the specific arguments applied to a particular site list by clicking the [Show Applied Parameters] button next to the site/IP list.</p>
+<h3>Please Note</h3>
+<p>Site/IP lists are not unique to each preset. Changing the list of websites/IP addresses will change it for all presets in the set.<br />
+(Except the "Local data storage" set, StoreId:<code>LocalUserStorage</code>)</p>
+<h3>For advanced users</h3>
+<p>You can find out the working directories of preset sets in the Store. Go to the [Library] page, click the [Show more actions] button for the desired item, and select<br />
+[Show local files] from the drop-down list.</p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

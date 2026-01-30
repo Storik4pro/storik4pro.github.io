@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">First Steps</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>This guide will help you learn the basics of using CDPI UI and customize it.</p>
+<ul>
+<li>
+<p><strong>Download the first component from the Store.</strong> Go to the Store to download the component you need. At the time of writing, ready-made presets only exist for Zapret.<br />
+ByeDPI requires selecting a preset using GoodCheck (GoodCheck can be found in the "Add-ons" section of the Store).</p>
+</li>
+<li>
+<p><strong>Prepare the downloaded component for use.</strong> Go to the settings page for the installed component and select the preset you want to use. (The component will automatically restart after changing the preset if it was previously running.) Also, keep in mind that some applications and services require restarting to obtain reliable information about their availability.</p>
+</li>
+<li>
+<p><strong>Configure component autostart.</strong> Configuring autostart requires a few simple steps. First, enable the GUI autostart by using the toggle switch<br />
+[Open application when PC starts] on the [Settings] page in the main window. Next, go to the settings for the installed component and check [Start automatically] to ON.</p>
+</li>
+</ul>
+<p>Congratulations! The application setup has been successfully completed.</p>
+<p>If some services become unavailable in the future:</p>
+<ul>
+<li>
+<p><strong>Check for updates.</strong> Go to the [Downloads] page in the Store and check for items that need updating. Update them if necessary.</p>
+</li>
+<li>
+<p><strong>Select a preset.</strong> Go through the list of presets again – maybe one of them will work.</p>
+</li>
+<li>
+<p><strong>Use GoodCheck selection.</strong> Find a working preset using GoodCheck – go to the [Utilities] page and start the selection by clicking [Automatic preset creation utility].<br />
+To select, you must have the "GoodCheck" add-on installed.</p>
+</li>
+</ul>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

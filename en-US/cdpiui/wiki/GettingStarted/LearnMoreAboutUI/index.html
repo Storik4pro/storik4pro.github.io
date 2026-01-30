@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">What is CDPI UI?</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>CDPI UI is a new version of the popular graphical interface formerly known as GoodbyeDPI-UI. The new version has been updated with numerous bug fixes, improved stability, and improved performance.</p>
+<p>The main goal of CDPI UI is to make access to utilities like Zapret and ByeDPI easier and more convenient for modern users.</p>
+<h2>Simple, yet powerful</h2>
+<p>CDPI UI doesn't limit the capabilities of components in any way. If you're comfortable configuring components like Zapret or ByeDPI yourself, go for it!</p>
+<p>The preset creation wizard makes creating new presets a breeze. Eye-pleasing flag highlighting and the ability to create variables for easy integration with the UI are designed specifically for advanced users.</p>
+<h2>Standalone</h2>
+<p>The launch settings auto-selection mechanism has become even more stable. The new interface allows you to combine several working strategies for<br />
+multiple website lists into a single, unified one, without having to search for a new strategy online.<br />
+Offline help allows you to get support even without an internet connection.</p>
+<h2>Customizable</h2>
+<p>The component store lets you choose only the components and presets you need. Nothing extra.</p>
+<h2>Free forever</h2>
+<p>No subscriptions—all functionality is always available without restrictions. Technical support is also completely free.</p>
+<p>Any paid support for the developer is optional, without pushy banners.</p>
+<h2>Open-Source</h2>
+<p>You can change the app's code at any time or verify its security on the official GitHib repository.</p>
+<h2>Fast</h2>
+<p>The app uses less than 10 KB of RAM when running in the background.</p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

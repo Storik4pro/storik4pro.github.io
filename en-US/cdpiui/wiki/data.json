@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "pages": [
+                {
+                    "title": "Welcome to Help!",
+                    "href": "WelcomeToHelp"
+                }
+            ],
+            "name": "."
+        },
+        {
+            "pages": [
+                {
+                    "title": "Add custom site to list for bypass",
+                    "href": "GettingStarted\\AddingCustomSiteListsToConfig"
+                },
+                {
+                    "title": "First Steps",
+                    "href": "GettingStarted\\FirstSteps"
+                },
+                {
+                    "title": "What is CDPI UI?",
+                    "href": "GettingStarted\\LearnMoreAboutUI"
+                }
+            ],
+            "name": "Getting Started"
+        },
+        {
+            "pages": [
+                {
+                    "title": "Troubleshooting component exceptions",
+                    "href": "TroubleshootingComponentExceptions\\BasicTroubleshooting"
+                }
+            ],
+            "name": "Troubleshooting Component Exceptions"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "data": [
+        {
+            "pages": [
+                {
+                    "title": "English",
+                    "href": "/en-US/cdpiui/wiki"
+                },
+                {
+                    "title": "Русский (Russian)",
+                    "href": "/ru-RU/cdpiui/wiki"
+                }
+            ],
+            "name": "."
+        }
+    ]
+}

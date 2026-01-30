@@ -1,0 +1,48 @@
+{
+    "data": [
+        {
+            "pages": [
+                {
+                    "title": "Добро пожаловать в справку!",
+                    "href": "WelcomeToHelp"
+                }
+            ],
+            "name": "."
+        },
+        {
+            "pages": [
+                {
+                    "title": "Добавление своих URL-адресов для обхода",
+                    "href": "GettingStarted\\AddingCustomSiteListsToConfig"
+                },
+                {
+                    "title": "Первые шаги",
+                    "href": "GettingStarted\\FirstSteps"
+                },
+                {
+                    "title": "Что такое CDPI UI?",
+                    "href": "GettingStarted\\LearnMoreAboutUI"
+                }
+            ],
+            "name": "Начало работы"
+        },
+        {
+            "pages": [
+                {
+                    "title": "\"Этот элемент на данный момент не поддерживается\"",
+                    "href": "Store\\ItemUnsupportedWarning"
+                }
+            ],
+            "name": "Магазин компонентов"
+        },
+        {
+            "pages": [
+                {
+                    "title": "Возможные ошибки при запуске компонентов и их решение",
+                    "href": "TroubleshootingComponentExceptions\\BasicTroubleshooting"
+                }
+            ],
+            "name": "Исправление ошибок компонентов"
+        }
+    ]
+}
