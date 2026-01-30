@@ -1,40 +1,33 @@
 const owner = 'Storik4pro';
 const LBrowserRepo = 'LBrowser';
 const SDARepo = 'Server-Deployment-Assistant';
+const CDPIRepo = 'cdpiui';
 const LBRVer = document.getElementById('LBR-ver');
 var version = '0.0.0';
 var downloadUri = `https://github.com/${owner}/${LBrowserRepo}/releases/download/v${version}/LinesBrowser_arm.appxbundle`;
 
-if (LBRVer) {
-    fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${LBrowserRepo}/`)
+function CheckRepo(element, repo) {
+    fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${repo}/`)
         .then(res => {
             if (!res.ok) throw new Error('Network response was not ok');
             return res.json();
         })
         .then(info => {
-            LBRVer.textContent = `Version ${info.versions[0]}`;
+            element.textContent = `Version ${info.versions[0]}`;
         })
         .catch(err => {
             console.error(err);
-            LBRVer.textContent = 'Versions list is not available';
+            element.textContent = 'Versions list is not available';
         });
 }
+
+if (LBRVer) CheckRepo(LBRVer, LBrowserRepo);
+
 const SDAVer = document.getElementById('SDA-ver');
-if (SDAVer) {
-    fetch(`https://data.jsdelivr.com/v1/package/gh/${owner}/${SDARepo}/`)
-        .then(res => {
-            if (!res.ok) throw new Error('Network response was not ok');
-            return res.json();
-        })
-        .then(info => {
-            SDAVer.textContent = `Version ${info.versions[0]}`;
-        })
-        .catch(err => {
-            console.error(err);
-            SDAVer.textContent = 'Versions list is not available';
-        });
-}
-const select = document.getElementById('LBR-ver-select');
+if (SDAVer) CheckRepo(SDAVer, SDARepo);
+
+const CDPIVer = document.getElementById('CDPI-ver');
+if (CDPIVer) CheckRepo(CDPIVer, CDPIRepo);
 
 var widgets = [
     {
@@ -49,8 +42,14 @@ var widgets = [
         repo: 'Server-Deployment-Assistant',
         selectId: 'SDA-ver-select',
         buttonId: 'SDA-download'
-
-    }
+    },
+    {
+        owner: 'Storik4pro',
+        repo: 'cdpiui',
+        selectId: 'CDPI-ver-select',
+        buttonId: 'CDPI-download',
+        fileSelectId: 'CDPI-file-select'
+    },
 ];
 
 function compareSemver(a, b) {
@@ -130,13 +129,14 @@ widgets.forEach(function (w) {
             var fileName;
             if (fileSel) {
                 fileName = fileSel.value;
+                fileName = fileName.replace("$VERSION", version);
             } else {
                 fileName = 'SDA.zip';
             }
             var url = 'https://github.com/' +
                 encodeURIComponent(w.owner) + '/' +
                 encodeURIComponent(w.repo) +
-                '/releases/download/v' +
+                '/releases/download/' + (w.repo == 'cdpiui' ? '' : 'v') +
                 encodeURIComponent(version) + '/' +
                 encodeURIComponent(fileName);
             window.location.href = url;
