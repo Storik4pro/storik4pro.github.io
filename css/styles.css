@@ -705,6 +705,7 @@ code {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .font-icon {
+    /*font-family: 'F16', 'Segoe MDL2 Assets';*/
     font-family: 'F16';
     align-self: center;
     align-content: center;
