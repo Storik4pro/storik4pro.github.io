@@ -1,8 +1,8 @@
 function setCookie(name, value, days) {
-  const d = new Date();
-  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + d.toUTCString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
 function getCookie(name) {
@@ -20,7 +20,7 @@ function getCookie(name) {
 document.addEventListener('click', (event) => {
     const projectLink = event.target.closest('.project-page-button');
     if (projectLink) {
-        event.preventDefault();
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
         const savedLang = getCookie('preferredLang');
         if (savedLang) {
         const prefix = savedLang === 'en' ? '/en-US/' : '/ru-RU/';
@@ -83,44 +83,3 @@ function CreateNewsTile(parent, url, title, info) {
     form.appendChild(button);
     parent.appendChild(form);
 }
-
-
-async function fetchRSS() {
-    const targetUrl = 'https://github.com/Storik4pro/cdpiui/releases.atom';
-    const fetchUrl = `https://cors.io/?url=${encodeURIComponent(targetUrl)}`;
-    
-    try {
-        console.log('Fetching URL:', fetchUrl); // Debugging 1: Log the request URL
-        const response = await fetch(fetchUrl);
-        const data = JSON.parse(await response.text());
-        
-        console.log('Data fetched:', data); // Debugging 2: Log the raw data
-        
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data.body, "application/xml");
-
-        console.log('Parsed XML:', xmlDoc); // Debugging 3: Log the parsed XML
-
-        const items = xmlDoc.querySelectorAll("entry");
-        const scrollContainer = document.querySelector('.news-container');
-        scrollContainer.innerHTML = '';
-
-        items.forEach(item => {
-            const title = item.querySelector("title").textContent;
-            const link = item.querySelector("link").textContent;
-            const description = item.querySelector("content").textContent;
-
-            const re = /(?:<h2>Что нового в этом обновлении<\/h2>)(.*?)(?:(?:<h2>.*?)|$)/gs;
-            let innerDescription = Array.from(String(description).matchAll(re))[0]
-            innerDescription = innerDescription === undefined ? "There is no new features in this release" : innerDescription[1]
-            console.log(innerDescription)
-
-            CreateNewsTile(scrollContainer, link, title, innerDescription);
-
-        });
-    } catch (error) {
-        console.error('Error fetching the RSS feed:', error);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', fetchRSS);

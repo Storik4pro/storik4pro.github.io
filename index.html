@@ -361,7 +361,13 @@
         
     </script>
     <script src="/modalScript.js"></script>
-    <script src="mainScript.js"></script>
+    <script src="/mainScript.js"></script>
     <script src="/cookieScript.js"></script>
+    <script src="/rssFeed.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchRSS("https://github.com/Storik4pro/cdpiui/releases.atom");
+        });
+    </script>
 </body>
 </html>
