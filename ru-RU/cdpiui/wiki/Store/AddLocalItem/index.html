@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - ru</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Добавление элемента из локального пакета</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Начиная с версии 0.3.0.0 Магазин поддерживает ручную установку и обновление элементов.</p>
+<h3>Для чего это нужно?</h3>
+<p>Функция локальной установки элементов и обновлений может быть полезна, если:</p>
+<ul>
+<li>По какой-либо причине приложение не может получить доступ к серверу Магазина для скачивания и обновления элементов.</li>
+<li>Вы хотите установить старую версию элемента, которая не доступна через Магазин.</li>
+<li>Элемент, который вы хотите установить в настоящий момент не представлен в Магазине.</li>
+<li>Требуется выполнить локальное развертывание приложения как можно быстрее, игнорируя Магазин.</li>
+</ul>
+<h3>Это безопасно?</h3>
+<p>Не смотря на то, что все пакеты проходят обязательную сертификацию и приложение проверяет целостность подписи пакета, не стоит терять бдительность.<br />
+Даже подписанный пакет может содержать в себе вредоносное ПО.</p>
+<p>Устанавливайте пакет только в том случае, если вы полностью уверены в его безопасности и доверяете поставщику.</p>
+<h3>Какие бывают виды пакетов?</h3>
+<ul>
+<li><strong>CDPISIGNEDPACK</strong> — стандартный пакет, обладающий подписью. Может содержать в себе надстройку, компонент или набор пресетов.</li>
+<li><strong>CDPICONFIGPACK</strong> — пакет предназначенный для поставки наборов пресетов. Не обладает подписью. Может содержать в себе только набор пресетов и имеет ограничение на поддерживаемые типы файлов при распаковке.</li>
+<li><strong>CDPIPATCH</strong> — пакет обновления приложения. Обладает подписью. Содержит файлы необходимые для обновления приложения.</li>
+</ul>
+<h3>Как установить локальный пакет?</h3>
+<p>Установить элемент из локального пакета можно несколькими способами.</p>
+<ol>
+<li>Перетащите пакет на ярлык приложения.</li>
+<li>Кликните правой кнопкой мыши по файлу пакета и выберите [Открыть с помощью]. Затем укажите путь к исполняемому файлу приложения <code>CDPIUI.exe</code>.</li>
+<li>Откройте Магазин и перейдите на страницу [Параметры]. Выберите [Добавить элемент из локального пакета]. Согласитесь с рисками.</li>
+</ol>
+<p>После выполнения одного из вышеперечисленных действий откроется диалог с предложением установить элемент. Выберите [Установить] и дождитесь завершения установки.</p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Связанные ссылки</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/ru-RU\cdpiui\wiki">
+                            Главная страница вики
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

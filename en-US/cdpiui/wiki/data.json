@@ -29,6 +29,31 @@
         {
             "pages": [
                 {
+                    "title": "Adding an item from a local package",
+                    "href": "Store\\AddLocalItem"
+                },
+                {
+                    "title": "Fixing the Store Database Loading Error",
+                    "href": "Store\\FixDatabaseLoadIssue"
+                },
+                {
+                    "title": "\"This item is currently unsupported\"",
+                    "href": "Store\\ItemUnsupportedWarning"
+                },
+                {
+                    "title": "Preferred version control",
+                    "href": "Store\\PreferedVersionControl"
+                },
+                {
+                    "title": "Welcome to the Component Store",
+                    "href": "Store\\WelcomeToStore"
+                }
+            ],
+            "name": "Components Store"
+        },
+        {
+            "pages": [
+                {
                     "title": "Troubleshooting component exceptions",
                     "href": "TroubleshootingComponentExceptions\\BasicTroubleshooting"
                 }

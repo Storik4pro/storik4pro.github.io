@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">"This item is currently unsupported"</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>You typically receive this error when trying to download an unsupported item from the Store.</p>
+<h3>Possible fixes</h3>
+<ul>
+<li>Update the app to the latest version.</li>
+<li>Change the Store version control on the [Store/Settings] page. This will force the app to download the database from another source, which may contain a supported version of this item.</li>
+</ul>
+<h3>If all else fails</h3>
+<ul>
+<li>
+<p>This item may not currently be supported by the app and will be supported in the future.</p>
+</li>
+<li>
+<p>An error may have occurred. Please report it to the app's technical support team, attaching the necessary logs and describing the problem in detail (this is important!). You can find the technical support address on the [About] page of the app's main window.</p>
+</li>
+</ul>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Fixing the Store Database Loading Error</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <h3>Before You Begin</h3>
+<p>Make sure you're connected to the internet and that your service provider isn't blocking connections using whitelists.<br />
+Otherwise, this guide won't be able to help you.</p>
+<p>Also:</p>
+<ul>
+<li>Look at the error code at the bottom of the Store [Home] page. This code contains useful information that may help solve your problem.</li>
+</ul>
+<h3>Possible Solutions</h3>
+<ul>
+<li><strong>Clear the Store cache.</strong> Go to the [Settings/Memory Usage/Store Cache] page and clear it. If this section isn't listed in [Memory Usage], skip this step.</li>
+<li><strong>Change the version control tool.</strong> For more information, see the <a href="https://storik4pro.github.io/en-US/cdpiui/wiki/Store/PreferedVersionControl/">Preferred version control</a> help section.</li>
+<li><strong>Make sure the application has write access to its directory.</strong> You can do this through the [Folder Info/Security] menu in Windows Explorer.</li>
+<li><strong>Restart your PC.</strong></li>
+<li><strong>Reset your firewall settings.</strong> Contact the official support team of your firewall provider for assistance with this step.</li>
+<li><strong>Add the application to your antivirus's exceptions list.</strong></li>
+</ul>
+<h3>If all else fails</h3>
+<ul>
+<li>Check the developer's official social media channels. They contain the most up-to-date information on available version control tools.</li>
+<li>There may have been an error on the application's side. Please report it to the application's technical support team, attaching the necessary logs and describing the problem in detail (this is important!). You can find the technical support address on the [About] page of the app's main window.</li>
+</ul>
+<p>Also, keep in mind that the app allows you to install components, add-ons, and presets locally. Repositories with supported packages are available at <a href="https://gitlab.com/cdpi-ui-components-store">gitlab.com/cdpi-ui-components-store</a>.<br />
+For help with local installation, see <a href="https://storik4pro.github.io/en-US/cdpiui/wiki/Store/AddLocalItem/">Adding an item from a local package</a></p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

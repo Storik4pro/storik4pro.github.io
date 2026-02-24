@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Preferred version control</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Starting with version 0.3.0.0, the Store has the ability to change the preferred server for receiving item and app updates.</p>
+<h3>What is this used for?</h3>
+<p>The app constantly contacts the server to obtain the following information:</p>
+<ul>
+<li>Availability of app updates.</li>
+<li>Availability of updates for individual items downloaded from the Store.</li>
+<li>The latest version of the Store database.</li>
+</ul>
+<p><strong>[!] Please note.</strong> You can completely disable checking for updates. To do this, go to [Settings] and uncheck the corresponding boxes in the [Notifications] group.</p>
+<p>The Store also uses the server to download new items to your device.</p>
+<h3>What does changing the preferred server affect?</h3>
+<p>Changing the preferred server forces the app to check for and download updates from a different server. However, some items may still be located on external servers, regardless of the app settings.</p>
+<h3>Should I change the preferred server?</h3>
+<p>You should change your preferred server if:</p>
+<ul>
+<li>The download speed from the current server is extremely slow.</li>
+<li>The app cannot access the current server. For example: updating the Store database failed with an SSL error; checking for app updates failed with an <code>UNEXPECTED_STATUS_CODE</code> error, etc.</li>
+<li>When trying to download an item, you repeatedly encounter network-related errors (<code>HTTP_REQUEST_EXCEPTION</code>, etc.) <strong>DO NOT CONFUSE</strong> those related to write operations (<code>IO_GENERIC</code>, etc.)</li>
+</ul>
+<p>If you are not experiencing any issues with either the Store or app updates, then you should not change your preferred server. <em>"If it works, don't touch it!"</em></p>
+<h3>How do I change my preferred server?</h3>
+<p>To change your preferred server, follow these simple steps:</p>
+<ul>
+<li>Open the Component Store (you can do this through the [Utilities] page in the main application window).</li>
+<li>Go to the [Settings] page of the Store.</li>
+<li>Switch the [Preferred version control] setting to the desired option.</li>
+<li>Restart the app: changes will take effect only after restarting.</li>
+</ul>
+<h3>What version controls are available for the Store?</h3>
+<p>Currently, the Store has a repository on public GitHub and GitLab servers. The number of available servers may change in the future.</p>
+<ul>
+<li><strong>GitHub</strong> Default repository. Links to the original repositories located on GitHub. May be unavailable to some users.</li>
+<li><strong>GitLab</strong> Backup repository. Links to backups of the original repositories on GitLab. Backups are maintained by the app developer and are not directly related to the authors of the elements.</li>
+</ul>
+<p>Up-to-date information on available servers and their addresses can be found in the app developer's official Telegram channel.</p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

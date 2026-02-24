@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - ru</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Исправление ошибки загрузки базы данных Магазина</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <h3>Перед началом работы</h3>
+<p>Убедитесь, что вы подключены к сети Интернет и поставщик услуг не блокирует соединения используя белые списки. <br />
+В противном случае, это руководство не сможет вам помочь. </p>
+<p>А так же:</p>
+<ul>
+<li>Посмотрите на код ошибки, который находится в нижней части страницы [Главная] Магазина. Этот код содержит полезную информацию, которая может помочь решить вашу проблему.</li>
+</ul>
+<h3>Возможные варианты исправления</h3>
+<ul>
+<li><strong>Отчистите кэш Магазина.</strong> Перейдите на страницу [Параметры/Использование памяти/Кэш Магазина] и выполните очистку. Если такого раздела в списке [Использование памяти] нет, то пропустите этот шаг.</li>
+<li><strong>Измените средство контроля версий.</strong> Узнать подробности можно в разделе справки <a href="https://storik4pro.github.io/ru-RU/cdpiui/wiki/Store/PreferedVersionControl/">Средство контроля версий</a></li>
+<li><strong>Убедитесь, что приложение имеет права записи в свою директорию.</strong> Сделать это можно через меню [Свойства папки/Безопасность], открываемое через проводник Windows.</li>
+<li><strong>Перезапустите ПК.</strong> </li>
+<li><strong>Сбросьте параметры брандмауэра.</strong> Обратитесь к официальной поддержке поставщика используемого брандмауэра для получения помощи с этим шагом.</li>
+<li><strong>Добавьте приложение в список исключений вашего антивируса.</strong></li>
+</ul>
+<h3>Если ничего не помогает</h3>
+<ul>
+<li>Проверьте официальные социальные сети разработчика. В них присутствует самая актуальная информация о доступных средствах контроля версий.</li>
+<li>Возможно произошла ошибка на стороне приложения. Сообщите о ней в службу технической поддержки приложения, приложив необходимые журналы и подробно описав проблему (это важно!). Найти адрес технической поддержки можно на странице [Сведения] главного окна приложения.</li>
+</ul>
+<p>Так же имейте в виду, что приложение позволяет устанавливать компоненты, надстройки и наборы пресетов локально. Репозитории с поддерживаемыми пакетами доступны по адресу <a href="https://gitlab.com/cdpi-ui-components-store">gitlab.com/cdpi-ui-components-store</a>. <br />
+Получить сравку по локальной установке можно в разделе <a href="https://storik4pro.github.io/ru-RU/cdpiui/wiki/Store/AddLocalItem/">Добавление элемента из локального пакета</a></p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Связанные ссылки</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/ru-RU\cdpiui\wiki">
+                            Главная страница вики
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

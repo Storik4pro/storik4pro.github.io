@@ -29,12 +29,24 @@
         {
             "pages": [
                 {
+                    "title": "Добавление элемента из локального пакета",
+                    "href": "Store\\AddLocalItem"
+                },
+                {
+                    "title": "Исправление ошибки загрузки базы данных Магазина",
+                    "href": "Store\\FixDatabaseLoadIssue"
+                },
+                {
                     "title": "\"Этот элемент на данный момент не поддерживается\"",
                     "href": "Store\\ItemUnsupportedWarning"
                 },
                 {
                     "title": "Средство контроля версий",
                     "href": "Store\\PreferedVersionControl"
+                },
+                {
+                    "title": "Добро пожаловать в Магазин Компонентов",
+                    "href": "Store\\WelcomeToStore"
                 }
             ],
             "name": "Магазин компонентов"
