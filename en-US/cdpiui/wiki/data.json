@@ -12,6 +12,19 @@
         {
             "pages": [
                 {
+                    "title": "What is auto-selection?",
+                    "href": "Autoselection\\1WhatAutoSelectionIs"
+                },
+                {
+                    "title": "Select the best preset",
+                    "href": "Autoselection\\BestConfigSelection"
+                }
+            ],
+            "name": "Autoselection Utilities"
+        },
+        {
+            "pages": [
+                {
                     "title": "Add custom site to list for bypass",
                     "href": "GettingStarted\\AddingCustomSiteListsToConfig"
                 },
@@ -59,6 +72,15 @@
                 }
             ],
             "name": "Troubleshooting Component Exceptions"
+        },
+        {
+            "pages": [
+                {
+                    "title": "Changing the HOSTS list on your PC",
+                    "href": "Utils\\EditHostsFileUtility"
+                }
+            ],
+            "name": "Utils"
         }
     ]
 }

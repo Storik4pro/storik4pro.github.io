@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - ru</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Изменение списка HOSTS на вашем ПК</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Начиная с версии 0.5.0.0 в приложение встроена утилита, позволяющая заменить файл HOSTS на вашем ПК. </p>
+<p>В процессе использования утилиты может мерцать окно консоли.</p>
+<h3>Зачем это нужно?</h3>
+<p>Изменение файла HOSTS позволяет решить следующие проблемы: <br />
+1. Исправить подключение к серверам Discord, расположенным в Финляндии.<br />
+2. Вернуть доступ к серверам GitHub, которые необходимы для получения обновлений приложения и корректной работы Магазина.</p>
+<p>Подробную информацию о том, как работает файл HOSTS и его восстановлении в Windows можно найти по адресу: <a href="https://support.microsoft.com/ru-ru/topic/c2a43f9d-e176-c6f3-e4ef-3500277a6dae">форум поддержки Майкрософт</a>.</p>
+<h3>Как добавить адреса в файл?</h3>
+<p><em>Примечание:</em> Если пункт меню [Добавить адреса в файл hosts] недоступен, то попробуйте сначала восстановить файл, а затем повторить попытку.</p>
+<ol>
+<li>Откройте [Утилита работы с файлом hosts]. Сделать это можно на странице [Утилиты] в главном окне приложения.</li>
+<li>Выберите [Добавить адреса в файл hosts].</li>
+<li>Согласитесь с предоставлением прав администратора процессу <code>EditHostFile.exe</code>. Это обязательно, иначе изменить файл не получится.</li>
+<li>Убедитесь, что статус замены в верхней части окна утилиты отображается как "✅ Файл hosts был изменен".</li>
+<li>Мои поздравления!</li>
+</ol>
+<h3>Как удалить адреса из файла?</h3>
+<p><em>Примечание:</em> Если пункт меню [Убрать адреса из файла hosts] недоступен, то изменения в файл hosts не производились.</p>
+<ol>
+<li>Откройте [Утилита работы с файлом hosts]. Сделать это можно на странице [Утилиты] в главном окне приложения.</li>
+<li>Выберите [Убрать адреса из файла hosts].</li>
+<li>Согласитесь с предоставлением прав администратора процессу <code>EditHostFile.exe</code>. Это обязательно, иначе изменить файл не получится.</li>
+<li>Убедитесь, что статус замены в верхней части окна утилиты отображается как "❎ Файл hosts не изменен".</li>
+<li>Вы неотразимы!</li>
+</ol>
+<h3>Как восстановить файл?</h3>
+<p><em>Примечание:</em> Если пункт меню [Восстановить оригинальный файл hosts из резервной копии] недоступен, то изменения в файл hosts не производились.</p>
+<ol>
+<li>Откройте [Утилита работы с файлом hosts]. Сделать это можно на странице [Утилиты] в главном окне приложения.</li>
+<li>Выберите [Восстановить оригинальный файл hosts из резервной копии].</li>
+<li>Согласитесь с предоставлением прав администратора процессу <code>EditHostFile.exe</code>. Это обязательно, иначе восстановить файл не получится.</li>
+<li>Убедитесь, что статус замены в верхней части окна утилиты отображается как "❎ Файл hosts не изменен". И кнопка восстановления стала недоступной для взаимодействия.</li>
+<li>Превосходно!</li>
+</ol>
+<h2>Возможные ошибки</h2>
+<p>Антивирусы могут пометить файл <code>EditHostFile.exe</code> как вредоносный и удалить его. В случае удаления файла приложение будет выдавать ошибку вида <code>APPLICATION_DAMAGED_NEED_REPAIR</code> при попытке изменить файл hosts. <br />
+В таком случае можно скопировать файл <code>EditHostFile.exe</code> из актуального Portable-релиза в рабочую директорию приложения рядом с <code>CDPIUI.exe</code>. Для MSI-версии достаточно выполнить восстановление. </p>
+<p>Для ручной отладки можно запустить <code>EditHostFile.exe</code> через терминал с правами администратора и отследить консольный вывод. </p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Флаг запуска утилиты</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/add</td>
+<td>Добавить адреса в файл hosts</td>
+</tr>
+<tr>
+<td>/remove</td>
+<td>Удалить адреса из файла hosts</td>
+</tr>
+<tr>
+<td>/recover</td>
+<td>Восстановить адреса из файла hosts.bak</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Для разработчиков</h2>
+<p>В утилиту встроен файл hosts из репозитория <a href="https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts">zapret-discord-youtube</a>. Любые его изменения влекут за собой персборку утилиты (из соображений безопасности).</p>
+<p>Добавляемые адреса помечаются тегом <code>[CDOM-B]</code> в начале и <code>[CDOM-E]</code> в конце добавляемого списка для упрощения их последующего удаления и редактирования. </p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Связанные ссылки</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/ru-RU\cdpiui\wiki">
+                            Главная страница вики
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Сообщить о проблеме<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/ru-RU/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

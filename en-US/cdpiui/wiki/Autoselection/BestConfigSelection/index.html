@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Select the best preset</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Allows you to select the best preset for a component from already loaded/created presets.</p>
+<p>To open this tool, go to the [Automatic Selection Tools] utility on the [Utilities] page of the main application window and select [Select the best preset automatically].</p>
+<h3>Getting to Know the Utility Window</h3>
+<p>The window has three areas:<br />
+- <strong>Select Settings.</strong> Here you must specify the selection settings before running the test.<br />
+- <strong>Results.</strong> The results of the selection after completion will be shown here.<br />
+- <strong>Debug Output.</strong> The progress of the current selection will be shown here.</p>
+<h3>Test Settings</h3>
+<p>Before starting the selection, make sure the following parameters are specified correctly:<br />
+- <strong>Component.</strong> Make sure the correct component is selected.<br />
+- <strong>Test Type.</strong> Select the test type. "Standard" takes less time but does not check for some types of blockages. "DPI Check" takes longer (each request is frozen to accurately detect blocking).<br />
+- <strong>Which presets to test.</strong> Select the list of presets to test. If you're unsure, leave "All presets" selected.</p>
+<p>Also, configure the list of sites to test. You can open it by clicking [List of sites to test] at the bottom of the selection settings area.</p>
+<p>The list has the following format:<br />
+<code>SITE_NAME = Site_URL</code><br />
+There are two acceptable URL formats:<br />
+- <strong>Standard.</strong> URL starts with <code>https://</code>. Ping and HTTPS connection checks are performed.<br />
+- <strong>Ping only.</strong> URL starts with <code>PING:</code>. Only ping is performed.</p>
+<p>Name – This is the site's display name in the log file and during the selection process. It doesn't affect the selection itself and can be any name, although it is not recommended to use characters other than the English alphabet.</p>
+<h3>Starting the test</h3>
+<p>Once you've completed the setup, you can begin the selection process. To do this, click the [Start test] button and wait for it to complete. The selection process can take anywhere from a few minutes to an hour, depending on your provider and the number of presets being tested.</p>
+<p>You can continue using your computer during the selection process, but applications using the network may generate errors.</p>
+<p>You can end the selection process early by clicking [Stop test]. Information about the presets already tested will be displayed in the results window.</p>
+<h3>Viewing results</h3>
+<p>Once the selection process is complete, review the results. Check whether the suggested preset is suitable for you and apply it.</p>
+<h3>What should I do if none of the presets work?</h3>
+<ul>
+<li>Open the [Troubleshooting] utility from the [Utilities] page of the main application window. Select "None of the presets allow me to access the websites I need" and wait for the test to complete. Follow the recommended steps and repeat the test.</li>
+<li>Download new preset sets from the Store. </li>
+<li>
+<ul>
+<li>Contact support.</li>
+</ul>
+</li>
+</ul>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

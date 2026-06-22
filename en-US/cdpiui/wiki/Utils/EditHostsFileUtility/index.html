@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">Changing the HOSTS list on your PC</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Starting with version 0.5.0.0, the app has a built-in utility for replacing the HOSTS file on your PC.</p>
+<p>The console window may flicker while using the utility.</p>
+<h3>Why is this necessary?</h3>
+<p>Changing the HOSTS file can solve the following issues:</p>
+<ol>
+<li>Fix connection to Discord servers located in Finland.</li>
+<li>Restore access to GitHub servers, which are necessary for receiving app updates and proper Store functionality.</li>
+</ol>
+<p>Detailed information about how the HOSTS file works and how to restore it in Windows can be found at: <a href="https://support.microsoft.com/en-us/topic/c2a43f9d-e176-c6f3-e4ef-3500277a6dae">Microsoft Support Forum</a>.</p>
+<h3>How do I add addresses to the file?</h3>
+<p><em>Note:</em> If the [Add addresses to the hosts file] menu item is unavailable, try repairing the file and then try again.</p>
+<ol>
+<li>Open the [Hosts file utility]. You can do this on the [Utilities] page in the main application window.</li>
+<li>Select [Add addresses to the hosts file].</li>
+<li>Agree to grant administrator privileges to the <code>EditHostFile.exe</code> process. This is required, otherwise you won't be able to edit the file.</li>
+<li>Make sure the replacement status at the top of the utility window displays "✅ The hosts file has been modified."</li>
+<li>You are the best!</li>
+</ol>
+<h3>How do I remove addresses from the file?</h3>
+<p><em>Note:</em> If the [Remove addresses from the hosts file] menu item is unavailable, no changes have been made to the hosts file.</p>
+<ol>
+<li>Open the [Hosts file utility]. You can do this on the [Utilities] page in the main application window.</li>
+<li>Select [Remove addresses from the hosts file].</li>
+<li>Grant administrator privileges to the <code>EditHostFile.exe</code> process. This is required, otherwise you won't be able to edit the file.</li>
+<li>Ensure that the replacement status at the top of the utility window is displayed as "❎ The hosts file is not modified."</li>
+<li>Well done!</li>
+</ol>
+<h3>How do I restore a file?</h3>
+<p><em>Note:</em> If the [Restore original hosts file from backup] menu item is unavailable, then no changes have been made to the hosts file.</p>
+<ol>
+<li>Open the Hosts file utility. You can do this on the [Utilities] page in the main application window.</li>
+<li>Select [Restore original hosts file from backup].</li>
+<li>Grant administrator privileges to the <code>EditHostFile.exe</code> process. This is required, otherwise you won't be able to restore the file.</li>
+<li>Ensure that the replacement status at the top of the utility window is displayed as "❎ The hosts file is not modified." The restore button should now be grayed out.</li>
+<li>Congratulations!</li>
+</ol>
+<h2>Possible Errors</h2>
+<p>Antivirus software may mark the <code>EditHostFile.exe</code> file as malicious and delete it. If the file is deleted, the application will return an error similar to <code>APPLICATION_DAMAGED_NEED_REPAIR</code> when attempting to edit the hosts file.</p>
+<p>In this case, you can copy the <code>EditHostFile.exe</code> file from the latest Portable release to the application's working directory next to <code>CDPIUI.exe</code>. For the MSI version, simply perform a restore.</p>
+<p>For manual debugging, you can run <code>EditHostFile.exe</code> in a terminal with administrator privileges and monitor the console output.</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Utility Launch Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/add</td>
+<td>Add addresses to the hosts file</td>
+</tr>
+<tr>
+<td>/remove</td>
+<td>Remove addresses from the hosts file</td>
+</tr>
+<tr>
+<td>/recover</td>
+<td>Restore addresses from the hosts.bak file</td>
+</tr>
+</tbody>
+</table></div>
+<h2>For developers</h2>
+<p>The utility includes a hosts file from the <a href="https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts">zapret-discord-youtube</a> repository. Any changes to this file will require a rebuild of the utility (for security reasons).</p>
+<p>Added addresses are marked with the <code>[CDOM-B]</code> tag at the beginning and <code>[CDOM-E]</code> tag at the end of the list to simplify their subsequent deletion and editing.</p>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>

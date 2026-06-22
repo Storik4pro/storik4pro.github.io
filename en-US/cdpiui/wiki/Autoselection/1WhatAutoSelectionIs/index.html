@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDPI UI - en</title>
+    <link rel="icon" href="/images/app_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+</head>
+<body class="legacy-body">
+    <div id="header"></div>
+        <div class="legacy-container">
+            <h2 class="legacy">What is auto-selection?</h2>
+            <div class="flex-container">
+                <div class="flex-container-item">
+                    <div class="legacy-info-block">
+                    <p>Auto-selection allows you to automatically select the appropriate component launch parameters without your intervention.</p>
+<p>There are several types of auto-selection:<br />
+- <strong>Creating a new preset using GoodCheck.</strong> Allows you to create a new custom preset that will allow access to inaccessible resources.<br />
+- <strong>Selecting the best preset.</strong> Allows you to select the best preset from those already downloaded/created.</p>
+<h3>Which auto-selection should I choose?</h3>
+<p>You should create a new preset using GoodCheck if:</p>
+<ul>
+<li>You are a confident PC user.</li>
+<li>You have at least a basic understanding of how blocking mechanisms work and the components that bypass them. <em>Information on this topic can be found on the component pages.</em></li>
+<li>None of the presets available in the Store allow access to the required websites.</li>
+</ul>
+<p>You should select a preset from those already downloaded if:</p>
+<ul>
+<li>You are a new PC user.</li>
+<li>You are not comfortable manually selecting configs.</li>
+</ul>
+<h3>How do I start auto-selection?</h3>
+<p>For more information on this topic, visit the related help pages:</p>
+<ul>
+<li>Creating a new config using GoodCheck</li>
+<li>Choosing the best config</li>
+</ul>
+<h3>Related Literature</h3>
+<ul>
+<li><a href="https://github.com/bol-van/zapret/blob/master/docs/readme.md">https://github.com/bol-van/zapret/blob/master/docs/readme.md</a></li>
+<li><a href="https://habr.com/ru/post/335436">https://habr.com/ru/post/335436</a> OR <a href="https://web.archive.org/web/20230331233644/https://habr.com/ru/post/335436/">https://web.archive.org/web/20230331233644/https://habr.com/ru/post/335436/</a></li>
+<li><a href="https://geneva.cs.umd.edu/papers/geneva_ccs19.pdf">https://geneva.cs.umd.edu/papers/geneva_ccs19.pdf</a></li>
+</ul>
+                    </div>
+                </div>
+                <div class="flex-container-item">
+                    <div class="sub-title-container">
+                        <span class="font-icon">&#xE71B;</span>
+                        <h3 class="legacy">Related links</h3>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy"
+                        href="/en-US\cdpiui\wiki">
+                            Main wiki page
+                        </a>
+                    </div>
+                    <div class="link-legacy-container">
+                        <a class="link-legacy" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/Storik4pro/cdpiui/issues">
+                            Report a problem<span class="font-icon">&#xE8A7;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="footer"></div>
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-title-banner">
+            <img src="/images/cookies.png" alt="cookie icon" class="cookie-icon">
+            <h3 class="legacy">Cookies</h3>
+        </div>
+        
+        <p>
+            This site uses cookies to save some settings (like your language).
+            You can disable cookies in your browser settings — the site will probably still work.
+        </p>
+        <button id="accept-cookies" class="legacy-button">OK</button>
+    </div>
+    <script src="/cookieScript.js"></script>
+    <script>
+        fetch('/en-US/cdpiui/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        fetch('/templates/legacyFooter.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        
+    </script>
+</body>
